@@ -1,0 +1,92 @@
+# =============== #
+# Unity generated #
+# =============== #
+/jamsquare/[Ll]ibrary/
+/jamsquare/[Tt]emp/
+/jamsquare/[Oo]bj/
+/jamsquare/[Bb]uild/
+/jamsquare/[Bb]uilds/
+/jamsquare/[Ll]ogs/
+!/jamsquare/[Aa]ssets/**/*.meta
+/jamsquare/[Aa]ssets/AssetStoreTools*
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+/jamsquare/.consulo/
+/jamsquare/.vs/
+/jamsquare/ExportedObj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+*.tmp
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# ====================== #
+# Gradle cache directory #
+# ====================== #
+/jamsquare/.gradle/
+
+# ============================= #
+# Unity3D generated meta files  #
+# ============================= #
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# ======================================== #
+# Unity3D generated file on crash reports  #
+# ======================================== #
+sysinfo.txt
+*.stackdump
+
+# ======================================== #
+# Crashlytics generated file               #
+# ======================================== #
+crashlytics-build.properties
+
+# ==================== #
+# Builds               #
+# ==================== #
+*.apk
+*.unitypackage
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+[Tt]humbs.db
+[Dd]esktop.ini
+
+# =============== #
+#      Other      #
+# =============== #
+*.blend1
+*.orig
+*.orig.meta
+*.blend1.meta
+
+# =============== #
+#    Whiteboard   #
+# =============== #
+jamsquare/.vs/jamsquare/v15/Server/sqlite3/storage.ide
+jamsquare/.vs/jamsquare/v15/Server/sqlite3/storage.ide-wal
+jamsquare/.vs/jamsquare/v15/Server/sqlite3/storage.ide-shm
+jamsquare/.vs/jamsquare/DesignTimeBuild/.dtbcache
+jamsquare.rar
+jamsquare.7z
