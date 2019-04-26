@@ -8,24 +8,64 @@ ModelImporter:
     100004: Bus_Wheel_back
     100006: Bus_Wheel_front
     100008: Trailer
+    100010: Bus_Wheel_back.001
+    100012: Bus_Wheel_back.002
+    100014: Bus_Wheel_front.001
+    100016: Bus_Wheel_front.002
+    100018: Bus_Wheel_trailer.001
+    100020: Bus_Wheel_trailer.002
+    100022: Bus_Wheel_trailer.003
+    100024: Bus_Wheel_trailer.004
     400000: //RootNode
     400002: Bus
     400004: Bus_Wheel_back
     400006: Bus_Wheel_front
     400008: Trailer
+    400010: Bus_Wheel_back.001
+    400012: Bus_Wheel_back.002
+    400014: Bus_Wheel_front.001
+    400016: Bus_Wheel_front.002
+    400018: Bus_Wheel_trailer.001
+    400020: Bus_Wheel_trailer.002
+    400022: Bus_Wheel_trailer.003
+    400024: Bus_Wheel_trailer.004
     2100000: No Name
     2300000: Bus
     2300002: Bus_Wheel_back
     2300004: Bus_Wheel_front
     2300006: Trailer
+    2300008: Bus_Wheel_back.001
+    2300010: Bus_Wheel_back.002
+    2300012: Bus_Wheel_front.001
+    2300014: Bus_Wheel_front.002
+    2300016: Bus_Wheel_trailer.001
+    2300018: Bus_Wheel_trailer.002
+    2300020: Bus_Wheel_trailer.003
+    2300022: Bus_Wheel_trailer.004
     3300000: Bus
     3300002: Bus_Wheel_back
     3300004: Bus_Wheel_front
     3300006: Trailer
+    3300008: Bus_Wheel_back.001
+    3300010: Bus_Wheel_back.002
+    3300012: Bus_Wheel_front.001
+    3300014: Bus_Wheel_front.002
+    3300016: Bus_Wheel_trailer.001
+    3300018: Bus_Wheel_trailer.002
+    3300020: Bus_Wheel_trailer.003
+    3300022: Bus_Wheel_trailer.004
     4300000: Bus_Wheel_back
     4300002: Trailer
     4300004: Bus_Wheel_front
     4300006: Bus
+    4300008: Bus_Wheel_front.002
+    4300010: Bus_Wheel_front.001
+    4300012: Bus_Wheel_back.002
+    4300014: Bus_Wheel_back.001
+    4300016: Bus_Wheel_trailer.004
+    4300018: Bus_Wheel_trailer.003
+    4300020: Bus_Wheel_trailer.002
+    4300022: Bus_Wheel_trailer.001
   externalObjects: {}
   materials:
     importMaterials: 1
