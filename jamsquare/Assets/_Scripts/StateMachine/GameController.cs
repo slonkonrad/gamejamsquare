@@ -16,8 +16,12 @@ public class GameController : MonoBehaviour
     [SerializeField] private PlayerTwoInputs playerTwoInputController;
     public PlayerTwoInputs PlayerTwoInputController => playerTwoInputController;
 
-    [SerializeField] private ScoreController scoreController;
+[SerializeField] private CarController carController;
+    public CarController CarController => carController;
+
+[SerializeField] private ScoreController scoreController;
     public ScoreController ScoreController => scoreController;
+
 
     private void Awake()
     {
