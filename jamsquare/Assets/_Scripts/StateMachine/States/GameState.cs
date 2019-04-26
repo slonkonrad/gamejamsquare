@@ -9,6 +9,7 @@ public class GameState : BaseState, IGameView
         base.InitState(gameController);
         this.gameController.UIController.GameUIController.GameView.listener = this;
         gameController.UIController.GameUIController.GameView.ShowView();
+        this.gameController.SoundController.playSound("SummerTown");
     }
 
     public override void UpdateState()
@@ -20,6 +21,7 @@ public class GameState : BaseState, IGameView
     {
         base.DeinitState();
         gameController.UIController.GameUIController.GameView.HideView();
+        this.gameController.SoundController.stopSound("SummerTown");
     }
 
     public void SetMenuState()
