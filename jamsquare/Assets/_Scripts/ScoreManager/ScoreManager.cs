@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IGameView
+public static class ScoreManager
 {
-    void SetMenuState();
-    void UpdateScore(Score score);
+    public static int Score;
 }
