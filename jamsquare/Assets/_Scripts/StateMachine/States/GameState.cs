@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITriggers, ILeftAnalog, IRightAnalog
+public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITriggers, ILeftAnalog, IRightAnalog, IScoreListener
 {
     public override void InitState(GameController gameController)
     {
         base.InitState(gameController);
+        this.gameController.UIController.GameUIController.GameView.listener = this;
         gameController.UIController.GameUIController.GameView.ShowView();
         RegisterInputs();
     }
@@ -116,4 +117,19 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
         Debug.Log("RightAnalogV: " + rightAnalogInputReceived.rightAnalogV + "|| player: " + player.PlayerID);
     } 
     #endregion
+
+    public void UpdateScore(Score score)
+    {
+        this.gameController.UIController.GameUIController.GameView.UpdateScore(score);
+    }
+
+    public void NpcKilled(string playerName)
+    {
+        gameController.ScoreController.NpcKilled(playerName);
+    }
+
+    public void FinishedLap(string playerName, int numberOfNpcOnBoard)
+    {
+        gameController.ScoreController.ArrivedAtStation(playerName, numberOfNpcOnBoard);
+    }
 }
