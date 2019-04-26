@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public IInuptController playerOneInputListener;
+    public IInuptController playerTwoInputListener;
+
     [SerializeField] private UIController uiController;
     public UIController UIController => uiController;
 
-    [SerializeField]
-    private ScoreController scoreController;
+    [SerializeField] private PlayerOneInputs playerOneInputController;
+    public PlayerOneInputs PlayerOneInputController => playerOneInputController;
+
+    [SerializeField] private PlayerTwoInputs playerTwoInputController;
+    public PlayerTwoInputs PlayerTwoInputController => playerTwoInputController;
+
+    [SerializeField] private ScoreController scoreController;
     public ScoreController ScoreController => scoreController;
 
     private void Awake()
@@ -18,6 +26,8 @@ public class GameController : MonoBehaviour
 
     private void Initialization()
     {
+        playerOneInputListener = PlayerOneInputController;
+        playerTwoInputListener = PlayerTwoInputController;
         ChangeState(new MenuState());
     }
 
