@@ -4,6 +4,20 @@ using UnityEngine;
 
 public class Keys
 {
+
+    public class Sounds
+    {
+        public class Backgrounds
+        {
+            public static string GAME_BACKGROUND = "SummerTown";
+        }
+
+        public class Sound_Effects
+        {
+
+        }
+    }
+    
     public class Inputs
     {
         public static string A_BUTTON_1 = "A_ButtonPlayer1";
@@ -18,7 +32,7 @@ public class Keys
         public static string Y_BUTTON_1 = "Y_ButtonPlayer1";
         public static string Y_BUTTON_2 = "Y_ButtonPlayer2";
 
-        public static string[] A_BUTTON ={ A_BUTTON_1, A_BUTTON_2 };
+        public static readonly string[] A_BUTTON = { A_BUTTON_1, A_BUTTON_2 };
         public static string[] B_BUTTON = { B_BUTTON_1, B_BUTTON_2 };
         public static string[] X_BUTTON = { X_BUTTON_1, X_BUTTON_2 };
         public static string[] Y_BUTTON = { Y_BUTTON_1, Y_BUTTON_2 };

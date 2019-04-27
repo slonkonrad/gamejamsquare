@@ -20,9 +20,14 @@ public class SoundController : MonoBehaviour
         allSounds = new List<AudioSource>();
         allSounds.AddRange(backgrounds);
         allSounds.AddRange(soundEffects);
-        allSounds.AddRange(screams);
     }
 
+    public void playScream()
+    {
+        AudioSource chosenSound = screams[Random.Range(0, screams.Count)];
+        if(chosenSound)
+            chosenSound.Play();
+    }
     public void playSound(string name)
     {
         AudioSource chosenSound = getSoundByName(name);
