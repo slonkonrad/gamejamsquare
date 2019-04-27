@@ -30,6 +30,7 @@ public class RaceController : MonoBehaviour
         if (playersProgressInRace[playerId] == checkpoints.Length)
         {
             scoreListener.FinishedLap(playerId, 0); // TODO: replace by actual value
+            playersProgressInRace[playerId] = 0;
         }
     }
 
