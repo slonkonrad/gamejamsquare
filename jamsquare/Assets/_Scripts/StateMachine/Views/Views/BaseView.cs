@@ -14,4 +14,9 @@ public class BaseView : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    public virtual void ExecuteFocusedButton<T>(T player) where T:BaseInput
+    { }
+
+    public virtual void SwitchButtonFocus<T>(InputController<T>.LeftAnalogInput leftAnalogInputReceived) where T : BaseInput
+    { }
 }

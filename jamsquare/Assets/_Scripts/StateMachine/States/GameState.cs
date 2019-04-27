@@ -10,7 +10,6 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     private InputController<BaseInput>.LeftAnalogInput playerOneReceivedLeftAnalogInput;
     private InputController<BaseInput>.LeftAnalogInput playerTwoReceivedLeftAnalogInput;
 
-
     public override void InitState(GameController gameController)
     {
         base.InitState(gameController);
@@ -19,7 +18,7 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
         this.gameController.ScoreController.ScoreListener = this;
         gameController.ScoreController.StartLap("Player 1");
         RegisterInputs();
-        this.gameController.SoundController.playSound("SummerTown");
+        this.gameController.SoundController.playSound(Keys.Sounds.Backgrounds.GAME_BACKGROUND);
 
         this.gameController.PathController.Initialise();
         this.gameController.PathController.StarthHumans();
@@ -29,9 +28,17 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     {
         base.UpdateState();
         gameController.PlayerOneCarController.UpdateInputs(playerOneReceivedTriggerInput, playerOneReceivedLeftAnalogInput);
-        gameController.PlayerTwoCarController.UpdateInputs(playerOneReceivedTriggerInput, playerOneReceivedLeftAnalogInput);
+        gameController.PlayerTwoCarController.UpdateInputs(playerTwoReceivedTriggerInput, playerTwoReceivedLeftAnalogInput);
         gameController.PlayerOneInputController.UpdateInputs();
         gameController.PlayerTwoInputController.UpdateInputs();
+        UpdateCarEngineSound();
+    }
+
+    private void UpdateCarEngineSound()
+    {
+        gameController.SoundController.updateCarEngineSound(
+            gameController.PlayerOneCarController.GetRBLocalVelocityMagnitude(),
+            gameController.PlayerTwoCarController.GetRBLocalVelocityMagnitude());
     }
 
     public override void FixedUpdateState()
@@ -49,7 +56,7 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
         base.DeinitState();
         gameController.UIController.GameUIController.GameView.HideView();
         UnregisterInputs();
-        this.gameController.SoundController.stopSound("SummerTown");
+        this.gameController.SoundController.stopSound(Keys.Sounds.Backgrounds.GAME_BACKGROUND);
     }
 
     public void SetMenuState()
