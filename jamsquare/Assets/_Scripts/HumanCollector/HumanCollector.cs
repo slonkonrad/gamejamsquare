@@ -10,16 +10,14 @@ public class HumanCollector : MonoBehaviour
     private int value;
     public void DeleteHumans()
     {
-        foreach (var val in rb)
-        {
-            val.AddRelativeForce(Vector3.up * 0.0001f);
-            val.gameObject.transform.parent = null;
-        }
-       
+        var val = Random.Range(0, rb.Length);
+        rb[val].constraints = RigidbodyConstraints.None;
+        rb[val].AddForce(Vector3.up * 0.00001f);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        DeleteHumans();
+        if(collision.collider.tag != "Human" && collision.collider.tag != "road")
+            DeleteHumans();
     }
 }
