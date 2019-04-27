@@ -31,6 +31,9 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
 
     public override void FixedUpdateState()
     {
+        Debug.Log("LeftAnalogH: " + playerOneReceivedLeftAnalogInput.leftAnalogH);
+        Debug.Log("LeftAnalogV: " + playerOneReceivedLeftAnalogInput.leftAnalogV);
+
         base.FixedUpdateState();
         gameController.PlayerOneCarController.UpdateCarPosition(playerOneReceivedTriggerInput, playerOneReceivedLeftAnalogInput);
         gameController.PlayerTwoCarController.UpdateCarPosition(playerTwoReceivedTriggerInput, playerTwoReceivedLeftAnalogInput);
@@ -132,6 +135,9 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     #region ILeftAnalog implementation
     public void UpdateLeftAnalogInput<T>(InputController<T>.LeftAnalogInput leftAnalogInputReceived, T player) where T : BaseInput
     {
+        Debug.Log("LeftAnalogH: " + leftAnalogInputReceived.leftAnalogH + "|| player: " + player.PlayerID);
+        Debug.Log("LeftAnalogV: " + leftAnalogInputReceived.leftAnalogV + "|| player: " + player.PlayerID);
+
         if (player.PlayerID.Equals(Keys.Players.PLAYER_ONE))
         {
             playerOneReceivedLeftAnalogInput.leftAnalogH = leftAnalogInputReceived.leftAnalogH;
