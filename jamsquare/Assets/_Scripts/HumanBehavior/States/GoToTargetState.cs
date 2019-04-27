@@ -40,7 +40,7 @@ public class GoToTargetState : BaseHState
 
         Vector3 targetVector = myTarget.transform.position - myHuman.transform.position;
         myHuman.rb.velocity = Vector3.Normalize(targetVector) * Mathfx.Lerp(myHuman.rb.velocity.magnitude, myHuman.speed, lerpValue);
-        myHuman.transform.rotation = Quaternion.LookRotation(targetVector);
+        myHuman.model.rotation = Quaternion.LookRotation(targetVector);
 
         DEBUG_currentVelocity = myHuman.rb.velocity.magnitude;
     }

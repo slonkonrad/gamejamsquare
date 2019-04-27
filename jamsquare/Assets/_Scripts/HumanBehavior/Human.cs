@@ -5,6 +5,7 @@ using UnityEngine;
 public class Human : MonoBehaviour
 {
     public Rigidbody rb;
+    public Transform model;
     public Target currentTarget;
     [SerializeField]
     public float speed = 2;
