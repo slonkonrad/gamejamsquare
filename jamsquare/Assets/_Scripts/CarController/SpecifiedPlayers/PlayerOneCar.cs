@@ -10,4 +10,10 @@ public class PlayerOneCar : CarController<BaseCar>
     {
         SetCar(baseCar);
     }
+
+    public float GetRBLocalVelocityMagnitude()
+    {
+        return transform.InverseTransformDirection(baseCar.carRB.velocity).magnitude;
+        // or return transform.InverseTransformDirection(baseCar.carRB.velocity).x;
+    }
 }
