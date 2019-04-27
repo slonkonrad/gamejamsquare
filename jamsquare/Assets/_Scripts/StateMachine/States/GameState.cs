@@ -20,11 +20,16 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
         gameController.ScoreController.StartLap("Player 1");
         RegisterInputs();
         this.gameController.SoundController.playSound("SummerTown");
+
+        this.gameController.PathController.Initialise();
+        this.gameController.PathController.StarthHumans();
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
+        gameController.PlayerOneCarController.UpdateInputs(playerOneReceivedTriggerInput, playerOneReceivedLeftAnalogInput);
+        gameController.PlayerTwoCarController.UpdateInputs(playerOneReceivedTriggerInput, playerOneReceivedLeftAnalogInput);
         gameController.PlayerOneInputController.UpdateInputs();
         gameController.PlayerTwoInputController.UpdateInputs();
     }
@@ -35,8 +40,8 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
         Debug.Log("LeftAnalogV: " + playerOneReceivedLeftAnalogInput.leftAnalogV);
 
         base.FixedUpdateState();
-        gameController.PlayerOneCarController.UpdateCarPosition(playerOneReceivedTriggerInput, playerOneReceivedLeftAnalogInput);
-        gameController.PlayerTwoCarController.UpdateCarPosition(playerTwoReceivedTriggerInput, playerTwoReceivedLeftAnalogInput);
+        gameController.PlayerOneCarController.UpdatePhysicsCalculation();
+        gameController.PlayerTwoCarController.UpdatePhysicsCalculation();
     }
 
     public override void DeinitState()

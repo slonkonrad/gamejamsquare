@@ -80,4 +80,25 @@ public class Keys
         public static int PLAYER_TWO = 1;
 
     }
+
+    
+    public class Animations
+    {
+
+        public static string[] RUN_ANIMATIONS = { "Running_Animation2" , "Running_Animation3" ,
+                                                 "Running_Animation4" , "Running_Animation5","Running_Animation6",
+                                                  "Running_Animation7","Running_Animation8","Running_Animation9"};
+        public static float[] RUN_ANIMARIONS_SPEED = {1,2.12f,                        //Konrad nie bij
+                                                      1,1,0.5f,
+                                                      0.54f,2.8f,2.34f};
+
+        public static string[] IDLE_ANIMATIONS = { "Idle_Animation1", "Idle_Animation2", "Idle_Animation3" };
+        public static float[] IDLE_ANIMARIONS_SPEED = { 5, 6, 7 };
+
+        public static string[] WALK_ANIMATIONS = { "Walk_Animation1" };
+        public static float[] WALK_ANIMARIONS_SPEED = { 5};
+
+        public static string STOP_ANIMATIONS = "Stop_Animation";
+
+    }
 }

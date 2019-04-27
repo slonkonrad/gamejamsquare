@@ -7,6 +7,7 @@ public class Target : MonoBehaviour
     public enum StateType
     {
         GoToTarget,
+        Wait,
 
     }
     public StateType myStateType;
@@ -14,9 +15,15 @@ public class Target : MonoBehaviour
     public Target nextTarget;
     public float range;
 
+    public float waitTime;
+
     public bool isStartTarget;
     public bool isEndTarget;
 
+    private void Start()
+    {
+        GetComponent<SphereCollider>().radius = range;
+    }
 
     private void OnDrawGizmos()
     {
@@ -30,18 +37,31 @@ public class Target : MonoBehaviour
     }
     public void OnTargetGet(Human h)
     {
-        switch (myStateType)
+        if (!isEndTarget)
         {
-            case StateType.GoToTarget:
-                Debug.Log("elo0");
-        h.SetGoToTargetState(nextTarget);
-                break;
+            switch (myStateType)
+            {
+                case StateType.GoToTarget:
+                    Debug.Log("elo0");
+                    h.SetGoToTargetState(nextTarget,waitTime);
+                    break;
+                case StateType.Wait:
+                    Debug.Log("elo1");
+                    h.SetWaitState(nextTarget,waitTime);
+                    break;
+            }
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Human")
+        {
+            other.GetComponent<Human>().currentState.ChangeTarget();
         }
     }
     public Target GetNextTarget(Human h)
     {
         OnTargetGet(h);
-        Debug.Log("debug" + this.name);
         return nextTarget;
     }
     public Target GetPreviousTarget()

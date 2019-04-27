@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaitState : BaseHState
+public class HittedState : BaseHState
 {
     Human myHuman;
     Target myTarget;
@@ -11,7 +11,6 @@ public class WaitState : BaseHState
         myHuman = human;
         myTarget = target;
 
-        Animate();
         ChangeTarget();
 
     }
@@ -27,16 +26,10 @@ public class WaitState : BaseHState
     }
     public override void ChangeTarget()
     {
-        myHuman.currentTarget = myTarget.GetNextTarget(myHuman);
     }
 
-    void Animate()
-    {
-        if (myTarget.isStartTarget)
-            myHuman.animator.SetTrigger(Keys.Animations.IDLE_ANIMATIONS[Random.Range(0, Keys.Animations.IDLE_ANIMATIONS.Length)]);
-    }
+
     public override void Deinitialise()
     {
-        throw new System.NotImplementedException();
     }
 }

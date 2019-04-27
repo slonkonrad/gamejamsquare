@@ -7,24 +7,21 @@ public class Human : MonoBehaviour
     public Rigidbody rb;
     public Transform model;
     public Target currentTarget;
+    public Animator animator;
     [SerializeField]
     public float speed = 2;
 
-    public float startRandomValue = 10;
-
+    public bool hasAnimation = false;
     [SerializeField]
     public float maxVelocity;
     [SerializeField]
     public float acceleration;
 
-    BaseHState currentState;
+    public BaseHState currentState;
 
     public void Initialise()
     {
         rb = GetComponent<Rigidbody>();
-        if (!currentTarget.isStartTarget)
-            Debug.Log("to niee jest startowy target");
-        startRandomValue = Random.Range(0, 10);
         currentState = new GoToTargetState();
         currentState.Initialise(this,currentTarget);
     }
@@ -46,12 +43,23 @@ public class Human : MonoBehaviour
         currentState.UpdateState();
     }
 
-    public void SetGoToTargetState(Target target)
+    public void SetGoToTargetState(Target target, float waitTime)
     {
             currentState.Deinitialise();
             currentState = new GoToTargetState();
-            currentState.Initialise(this, target);
+        currentState.myWaitTime = waitTime;
+        currentState.Initialise(this, target);
         
+    }
+    public void SetWaitState(Target target, float waitTime)
+    {
+        currentState.Deinitialise();
+        currentState = new WaitState();
+        currentState.myWaitTime = waitTime;
+        currentState.Initialise(this, target);
+        
+
+
     }
 
 
