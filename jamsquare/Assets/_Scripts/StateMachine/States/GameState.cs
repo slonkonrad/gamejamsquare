@@ -12,6 +12,7 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
         this.gameController.ScoreController.ScoreListener = this;
         gameController.ScoreController.StartLap("Player 1");
         RegisterInputs();
+        this.gameController.SoundController.playSound("SummerTown");
     }
 
     public override void UpdateState()
@@ -26,6 +27,7 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
         base.DeinitState();
         gameController.UIController.GameUIController.GameView.HideView();
         UnregisterInputs();
+        this.gameController.SoundController.stopSound("SummerTown");
     }
 
     public void SetMenuState()
@@ -107,8 +109,8 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     #region ILeftAnalog implementation
     public void UpdateLeftAnalogInput<T>(InputController<T>.LeftAnalogInput leftAnalogInputReceived, T player) where T : BaseInput
     {
-        Debug.Log("LeftAnalogH: " + leftAnalogInputReceived.leftAnalogH + "|| player: " + player.PlayerID);
-        Debug.Log("LeftAnalogV: " + leftAnalogInputReceived.leftAnalogV + "|| player: " + player.PlayerID);
+        //Debug.Log("LeftAnalogH: " + leftAnalogInputReceived.leftAnalogH + "|| player: " + player.PlayerID);
+        //Debug.Log("LeftAnalogV: " + leftAnalogInputReceived.leftAnalogV + "|| player: " + player.PlayerID);
     }
     #endregion
 

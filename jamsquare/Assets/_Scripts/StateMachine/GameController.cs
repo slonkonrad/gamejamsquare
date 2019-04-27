@@ -16,14 +16,26 @@ public class GameController : MonoBehaviour
     [SerializeField] private PlayerTwoInputs playerTwoInputController;
     public PlayerTwoInputs PlayerTwoInputController => playerTwoInputController;
 
+    [SerializeField] private CarController carController;
+    public CarController CarController => carController;
+
     [SerializeField] private ScoreController scoreController;
     public ScoreController ScoreController => scoreController;
+
+
+    [SerializeField] 
+    private ParticleController particleController;
+    public ParticleController ParticleController => particleController;
+
+    [SerializeField] 
+    private SoundController soundController;
+    public SoundController SoundController => soundController;
 
     private void Awake()
     {
         Initialization();
     }
-
+    
     private void Initialization()
     {
         playerOneInputListener = PlayerOneInputController;
