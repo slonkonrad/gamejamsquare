@@ -56,6 +56,9 @@ public class Target : MonoBehaviour
     {
         if(other.tag == "Human")
         {
+            Debug.Log(other.name);
+            if (other.GetComponent<Human>().currentState == null)
+                Debug.Log("current state to null");
             other.GetComponent<Human>().currentState.ChangeTarget();
         }
     }

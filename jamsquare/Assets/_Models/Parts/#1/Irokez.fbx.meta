@@ -4,12 +4,78 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Irokez
+    100004: Irokez.001
+    100006: mixamorig_Head
+    100008: mixamorig_HeadTop_End
+    100010: mixamorig_HeadTop_End_end
+    100012: mixamorig_Hips
+    100014: mixamorig_LeftArm
+    100016: mixamorig_LeftFoot
+    100018: mixamorig_LeftForeArm
+    100020: mixamorig_LeftHand
+    100022: mixamorig_LeftHand_end
+    100024: mixamorig_LeftLeg
+    100026: mixamorig_LeftShoulder
+    100028: mixamorig_LeftToe_End
+    100030: mixamorig_LeftToe_End_end
+    100032: mixamorig_LeftToeBase
+    100034: mixamorig_LeftUpLeg
+    100036: mixamorig_Neck
+    100038: mixamorig_RightArm
+    100040: mixamorig_RightFoot
+    100042: mixamorig_RightForeArm
+    100044: mixamorig_RightHand
+    100046: mixamorig_RightHand_end
+    100048: mixamorig_RightLeg
+    100050: mixamorig_RightShoulder
+    100052: mixamorig_RightToe_End
+    100054: mixamorig_RightToe_End_end
+    100056: mixamorig_RightToeBase
+    100058: mixamorig_RightUpLeg
+    100060: mixamorig_Spine
+    100062: mixamorig_Spine1
+    100064: mixamorig_Spine2
     400000: //RootNode
+    400002: Irokez
+    400004: Irokez.001
+    400006: mixamorig_Head
+    400008: mixamorig_HeadTop_End
+    400010: mixamorig_HeadTop_End_end
+    400012: mixamorig_Hips
+    400014: mixamorig_LeftArm
+    400016: mixamorig_LeftFoot
+    400018: mixamorig_LeftForeArm
+    400020: mixamorig_LeftHand
+    400022: mixamorig_LeftHand_end
+    400024: mixamorig_LeftLeg
+    400026: mixamorig_LeftShoulder
+    400028: mixamorig_LeftToe_End
+    400030: mixamorig_LeftToe_End_end
+    400032: mixamorig_LeftToeBase
+    400034: mixamorig_LeftUpLeg
+    400036: mixamorig_Neck
+    400038: mixamorig_RightArm
+    400040: mixamorig_RightFoot
+    400042: mixamorig_RightForeArm
+    400044: mixamorig_RightHand
+    400046: mixamorig_RightHand_end
+    400048: mixamorig_RightLeg
+    400050: mixamorig_RightShoulder
+    400052: mixamorig_RightToe_End
+    400054: mixamorig_RightToe_End_end
+    400056: mixamorig_RightToeBase
+    400058: mixamorig_RightUpLeg
+    400060: mixamorig_Spine
+    400062: mixamorig_Spine1
+    400064: mixamorig_Spine2
     2100000: Red
     2100002: Green
     2100004: Blue
     2300000: //RootNode
+    2300002: Irokez
     3300000: //RootNode
+    3300002: Irokez
     4300000: Irokez
   externalObjects:
   - first:

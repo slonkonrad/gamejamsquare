@@ -49,6 +49,8 @@ public class PathController : MonoBehaviour
     {
         foreach (var item in humansData)
         {
+            item.human.gameObject.SetActive(true);
+            item.human.gameObject.tag = "Human";
             item.human.transform.position = item.spawnPos;
             item.human.currentTarget = item.startingTarget;
             item.human.Initialise();
