@@ -18,6 +18,14 @@ ModelImporter:
     400010: Wheel03
     400012: Wheel04
     2100000: No Name
+    2100002: Yellow
+    2100004: Gray
+    2100006: Black
+    2100008: White
+    2100010: Emiss
+    2100012: Glass
+    2100014: Red
+    2100016: Orange
     2300000: Bus
     2300002: Drabina
     2300004: Wheel01
