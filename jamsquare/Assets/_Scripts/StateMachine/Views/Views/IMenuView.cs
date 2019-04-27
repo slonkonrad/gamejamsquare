@@ -5,4 +5,6 @@ using UnityEngine;
 public interface IMenuView
 {
     void SetGameState();
+    void OnStartButtonFocused();
+    void OnExitButtonFocused();
 }

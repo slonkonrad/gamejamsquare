@@ -15,9 +15,15 @@ public class Target : MonoBehaviour
     public Target nextTarget;
     public float range;
 
+    public float waitTime;
+
     public bool isStartTarget;
     public bool isEndTarget;
 
+    private void Start()
+    {
+        GetComponent<SphereCollider>().radius = range;
+    }
 
     private void OnDrawGizmos()
     {
@@ -37,19 +43,28 @@ public class Target : MonoBehaviour
             {
                 case StateType.GoToTarget:
                     Debug.Log("elo0");
-                    h.SetGoToTargetState(nextTarget);
+                    h.SetGoToTargetState(nextTarget,waitTime);
                     break;
                 case StateType.Wait:
                     Debug.Log("elo1");
-                    h.SetWaitState(nextTarget);
+                    h.SetWaitState(nextTarget,waitTime);
                     break;
             }
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Human")
+        {
+            Debug.Log(other.name);
+            if (other.GetComponent<Human>().currentState == null)
+                Debug.Log("current state to null");
+            other.GetComponent<Human>().currentState.ChangeTarget();
         }
     }
     public Target GetNextTarget(Human h)
     {
         OnTargetGet(h);
-        Debug.Log("debug" + this.name);
         return nextTarget;
     }
     public Target GetPreviousTarget()
