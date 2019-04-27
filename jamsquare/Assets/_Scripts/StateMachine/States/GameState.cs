@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITriggers, ILeftAnalog, IRightAnalog, IScoreListener
 {
+    private InputController<BaseInput>.TriggerInput playerOneReceivedTriggerInput;
+    private InputController<BaseInput>.TriggerInput playerTwoReceivedTriggerInput;
+
+    private InputController<BaseInput>.LeftAnalogInput playerOneReceivedLeftAnalogInput;
+    private InputController<BaseInput>.LeftAnalogInput playerTwoReceivedLeftAnalogInput;
+
+
     public override void InitState(GameController gameController)
     {
         base.InitState(gameController);
@@ -20,6 +27,13 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
         base.UpdateState();
         gameController.PlayerOneInputController.UpdateInputs();
         gameController.PlayerTwoInputController.UpdateInputs();
+    }
+
+    public override void FixedUpdateState()
+    {
+        base.FixedUpdateState();
+        gameController.PlayerOneCarController.UpdateCarPosition(playerOneReceivedTriggerInput, playerOneReceivedLeftAnalogInput);
+        gameController.PlayerTwoCarController.UpdateCarPosition(playerTwoReceivedTriggerInput, playerTwoReceivedLeftAnalogInput);
     }
 
     public override void DeinitState()
@@ -101,16 +115,33 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     #region ITriggers implementation
     public void UpdateTriggerInput<T>(InputController<T>.TriggerInput triggerInputReceived, T player) where T : BaseInput
     {
-        Debug.Log("LT: " + triggerInputReceived.LT + "|| player: " + player.PlayerID);
-        Debug.Log("RT: " + triggerInputReceived.RT + "|| player: " + player.PlayerID);
+        if (player.PlayerID.Equals(Keys.Players.PLAYER_ONE))
+        {
+            Debug.Log("TEST");
+            playerOneReceivedTriggerInput.LT = triggerInputReceived.LT;
+            playerOneReceivedTriggerInput.RT = triggerInputReceived.RT;
+        }
+        else
+        {
+            playerTwoReceivedTriggerInput.LT = triggerInputReceived.LT;
+            playerTwoReceivedTriggerInput.RT = triggerInputReceived.RT;
+        }
     }
     #endregion
 
     #region ILeftAnalog implementation
     public void UpdateLeftAnalogInput<T>(InputController<T>.LeftAnalogInput leftAnalogInputReceived, T player) where T : BaseInput
     {
-        //Debug.Log("LeftAnalogH: " + leftAnalogInputReceived.leftAnalogH + "|| player: " + player.PlayerID);
-        //Debug.Log("LeftAnalogV: " + leftAnalogInputReceived.leftAnalogV + "|| player: " + player.PlayerID);
+        if (player.PlayerID.Equals(Keys.Players.PLAYER_ONE))
+        {
+            playerOneReceivedLeftAnalogInput.leftAnalogH = leftAnalogInputReceived.leftAnalogH;
+            playerOneReceivedLeftAnalogInput.leftAnalogV = leftAnalogInputReceived.leftAnalogV;
+        }
+        else
+        {
+            playerTwoReceivedLeftAnalogInput.leftAnalogH = leftAnalogInputReceived.leftAnalogH;
+            playerTwoReceivedLeftAnalogInput.leftAnalogV = leftAnalogInputReceived.leftAnalogV;
+        }
     }
     #endregion
 

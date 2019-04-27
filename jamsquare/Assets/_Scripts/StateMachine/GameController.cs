@@ -16,12 +16,14 @@ public class GameController : MonoBehaviour
     [SerializeField] private PlayerTwoInputs playerTwoInputController;
     public PlayerTwoInputs PlayerTwoInputController => playerTwoInputController;
 
-    [SerializeField] private CarController carController;
-    public CarController CarController => carController;
+    [SerializeField] private PlayerOneCar playerOneCarController;
+    public PlayerOneCar PlayerOneCarController => playerOneCarController;
+
+    [SerializeField] private PlayerTwoCar playerTwoCarController;
+    public PlayerTwoCar PlayerTwoCarController => playerTwoCarController;
 
     [SerializeField] private ScoreController scoreController;
     public ScoreController ScoreController => scoreController;
-
 
     [SerializeField] 
     private ParticleController particleController;
@@ -60,5 +62,11 @@ public class GameController : MonoBehaviour
     {
         if (currentState != null)
             currentState.UpdateState();
+    }
+
+    private void FixedUpdate()
+    {
+        if (currentState != null)
+            currentState.FixedUpdateState();
     }
 }

@@ -4,62 +4,60 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Human : MonoBehaviour
 {
-    Rigidbody rb;
+    public Rigidbody rb;
+    public Transform model;
     public Target currentTarget;
     [SerializeField]
-    private float speed = 2;
+    public float speed = 2;
 
-    public float StartRandomValue = 10;
+    public float startRandomValue = 10;
 
-    
+    [SerializeField]
+    public float maxVelocity;
+    [SerializeField]
+    public float acceleration;
 
-    void Start()
-    {
-        Initialise();
-    }
-    void Initialise()
+    BaseHState currentState;
+
+    public void Initialise()
     {
         rb = GetComponent<Rigidbody>();
         if (!currentTarget.isStartTarget)
             Debug.Log("to niee jest startowy target");
-
+        startRandomValue = Random.Range(0, 10);
+        currentState = new GoToTargetState();
+        currentState.Initialise(this,currentTarget);
     }
 
     void FixedUpdate()
     {
         CustomFixedUpdate();
     }
+    private void Update()
+    {
+        CustomUpdate();
+    }
     void CustomFixedUpdate()
     {
-        GoToTarget(currentTarget.transform);
-        if (Vector3.Distance(transform.position, currentTarget.transform.position) < currentTarget.range)
-            if (currentTarget.GetNextTarget() != null)
-            currentTarget = currentTarget.GetNextTarget();
-
+        currentState.FixedUpdateState();
     }
-
-    void GoToTarget(Transform target)
+    void CustomUpdate()
     {
-        Vector3 pos = target.position;
-        Move(pos);
-        Debug.DrawLine(transform.position, target.transform.position,Color.red);
+        currentState.UpdateState();
     }
 
-    [SerializeField]
-    private float maxVelocity;
-    [SerializeField]
-    private float acceleration;
-
-    public float DEBUG_currentVelocity;
-    void Move(Vector3 target)
+    public void SetGoToTargetState(Target target)
     {
-        //rb.velocity += (target - transform.position) * speed*Time.fixedDeltaTime;
-        float lerpValue = ((maxVelocity - rb.velocity.magnitude) / maxVelocity) * acceleration;
-        if (rb.velocity.magnitude >= maxVelocity)
-            lerpValue = 1;
-        rb.velocity = Vector3.Normalize((target - transform.position) )* Mathfx.Lerp(rb.velocity.magnitude, speed, lerpValue);
-        DEBUG_currentVelocity = rb.velocity.magnitude;
+            currentState.Deinitialise();
+            currentState = new GoToTargetState();
+            currentState.Initialise(this, target);
+        
     }
+
+
+
+
+
 
 
 

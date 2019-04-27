@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
+    public enum StateType
+    {
+        GoToTarget,
 
+    }
+    public StateType myStateType;
     public Target previousTarget;
     public Target nextTarget;
     public float range;
 
     public bool isStartTarget;
     public bool isEndTarget;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
@@ -26,22 +28,24 @@ public class Target : MonoBehaviour
 
         Gizmos.DrawWireSphere(transform.position, range);
     }
-
-    public void OnGetToTarget()
+    public void OnTargetGet(Human h)
     {
-
+        switch (myStateType)
+        {
+            case StateType.GoToTarget:
+                Debug.Log("elo0");
+        h.SetGoToTargetState(nextTarget);
+                break;
+        }
     }
-    public Target GetNextTarget()
+    public Target GetNextTarget(Human h)
     {
+        OnTargetGet(h);
+        Debug.Log("debug" + this.name);
         return nextTarget;
     }
     public Target GetPreviousTarget()
     {
         return previousTarget;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
