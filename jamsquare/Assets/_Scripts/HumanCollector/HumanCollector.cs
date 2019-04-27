@@ -11,6 +11,7 @@ public class HumanCollector : MonoBehaviour
     public void DeleteHumans()
     {
         var val = Random.Range(0, rb.Length);
+        listOfAllHumans[val].GetComponent<Outline>().enabled = false;
         rb[val].constraints = RigidbodyConstraints.None;
         rb[val].AddForce(Vector3.up * 0.00001f);
     }
