@@ -77,7 +77,7 @@ public class InputController<T> : MonoBehaviour, IInuptController where T : Base
 
     private void UpdateLeftAnalogAxis(T player)
     {
-        UpdateRightAnalogInput(player);
+        UpdateLeftAnalogInput(player);
     }
 
     #region RightAnalogAxis
@@ -91,7 +91,7 @@ public class InputController<T> : MonoBehaviour, IInuptController where T : Base
 
     private void UpdateRightAnalogAxis(T player)
     {
-        UpdateLeftAnalogInput(player);
+        UpdateRightAnalogInput(player);
     }
 
     #region LeftAnalogAxis
