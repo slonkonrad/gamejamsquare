@@ -8,5 +8,6 @@
     }
 
     public virtual void UpdateState() { }
+    public virtual void FixedUpdateState() { }
     public virtual void DeinitState() { }
 }
