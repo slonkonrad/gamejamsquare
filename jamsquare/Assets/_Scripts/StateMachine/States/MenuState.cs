@@ -16,8 +16,8 @@ public class MenuState : BaseState, IMenuView, IActionButtons, ILeftAnalog, IPla
         this.gameController.UIController.MenuUIController.CurrentView = this.gameController.UIController.MenuUIController.MenuView;
         this.gameController.UIController.MenuUIController.CurrentView.ShowView();
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
     public override void UpdateState()

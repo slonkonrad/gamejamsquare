@@ -21,6 +21,10 @@ public class PlayerSelectionView : BaseView
     bool multiPlayerOneReady = false;
     bool multiPlayerTwoReady = false;
 
+    public void SetGameState()
+    {
+        listener.SetGameState();
+    }
 
     public void SwitchToSingleplayerView()
     {
