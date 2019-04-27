@@ -1,6 +1,6 @@
 ﻿public interface IScoreListener
 {
-    void NpcKilled(string playerName);
-    void FinishedLap(string playerName, int numberOfNpcOnBoard);
+    void NpcKilled(int playerId);
+    void FinishedLap(int playerId, int numberOfNpcOnBoard);
     void UpdateScore(Score score);
 }
