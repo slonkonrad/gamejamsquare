@@ -18,12 +18,14 @@ public class CarController<T> : MonoBehaviour where T : BaseCar
     private void UpdateInputs(InputController<BaseInput>.TriggerInput receivedTriggerInput,
         InputController<BaseInput>.LeftAnalogInput receivedLeftAnalogInput)
     {
-        if (receivedTriggerInput.LT > 0)
-            verticalInput = receivedTriggerInput.LT;
-        else if (receivedTriggerInput.RT > 0)
-            verticalInput = -receivedTriggerInput.RT;
-
+       
+        if (receivedTriggerInput.RT > 0)
+            verticalInput = receivedTriggerInput.RT;
+        else if (receivedTriggerInput.LT > 0)
+            verticalInput = -receivedTriggerInput.LT;
+        
         horizontalInput = receivedLeftAnalogInput.leftAnalogH;
+        Debug.Log(horizontalInput);
     }
 
     private void Steer()
