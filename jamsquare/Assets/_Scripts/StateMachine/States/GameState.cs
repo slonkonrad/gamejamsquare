@@ -10,7 +10,6 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     private InputController<BaseInput>.LeftAnalogInput playerOneReceivedLeftAnalogInput;
     private InputController<BaseInput>.LeftAnalogInput playerTwoReceivedLeftAnalogInput;
 
-
     public override void InitState(GameController gameController)
     {
         base.InitState(gameController);
@@ -19,7 +18,7 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
         this.gameController.ScoreController.ScoreListener = this;
         gameController.ScoreController.StartLap("Player 1");
         RegisterInputs();
-        this.gameController.SoundController.playSound("SummerTown");
+        this.gameController.SoundController.playSound(Keys.Sounds.Backgrounds.GAME_BACKGROUND);
     }
 
     public override void UpdateState()
@@ -33,7 +32,7 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     {
         base.FixedUpdateState();
         gameController.PlayerOneCarController.UpdateCarPosition(playerOneReceivedTriggerInput, playerOneReceivedLeftAnalogInput);
-        gameController.PlayerTwoCarController.UpdateCarPosition(playerTwoReceivedTriggerInput, playerTwoReceivedLeftAnalogInput);
+        gameController.PlayerTwoCarController.UpdateCarPosition(playerTwoReceivedTriggerInput, playerTwoReceivedLeftAnalogInput);   
     }
 
     public override void DeinitState()
@@ -41,7 +40,7 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
         base.DeinitState();
         gameController.UIController.GameUIController.GameView.HideView();
         UnregisterInputs();
-        this.gameController.SoundController.stopSound("SummerTown");
+        this.gameController.SoundController.stopSound(Keys.Sounds.Backgrounds.GAME_BACKGROUND);
     }
 
     public void SetMenuState()
