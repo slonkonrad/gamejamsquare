@@ -6,9 +6,11 @@ ModelImporter:
     100000: //RootNode
     400000: //RootNode
     2100000: Orange
+    2100002: Grey
     2300000: //RootNode
     3300000: //RootNode
     4300000: Tor_Col_droga
+    4300002: Tor_Col
   externalObjects: {}
   materials:
     importMaterials: 1
