@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MenuView : BaseView
 {
-    public IMenuView listener;
-
+    public IMenuView Listener;
     public override void ShowView()
     {
         base.ShowView();
@@ -14,10 +13,5 @@ public class MenuView : BaseView
     public override void HideView()
     {
         base.HideView();
-    }
-
-    public void SetGameState()
-    {
-        listener.SetGameState();
     }
 }

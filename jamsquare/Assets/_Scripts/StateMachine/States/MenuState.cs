@@ -7,8 +7,11 @@ public class MenuState : BaseState, IMenuView
     public override void InitState(GameController gameController)
     {
         base.InitState(gameController);
-        this.gameController.UIController.MenuUIController.MenuView.listener = this;
-        gameController.UIController.MenuUIController.MenuView.ShowView();
+        this.gameController.UIController.MenuUIController.PlayerSelectionView.Listener = this;
+        this.gameController.UIController.MenuUIController.MenuView.Listener = this;
+        this.gameController.UIController.MenuUIController.MenuView.ShowView();
+        this.gameController.UIController.MenuUIController.CurrentView =
+            this.gameController.UIController.MenuUIController.MenuView;
     }
 
     public override void UpdateState()
@@ -18,14 +21,16 @@ public class MenuState : BaseState, IMenuView
 
     public override void DeinitState()
     {
-        gameController.UIController.MenuUIController.MenuView.HideView();
+        gameController.UIController.MenuUIController.CurrentView.HideView();
         base.DeinitState();
     }
 
     #region IMenuView implementation
+
     public void SetGameState()
     {
         gameController.ChangeState(new GameState());
-    } 
+    }
+
     #endregion
 }

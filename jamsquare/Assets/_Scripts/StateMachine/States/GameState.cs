@@ -9,6 +9,8 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
         base.InitState(gameController);
         this.gameController.UIController.GameUIController.GameView.listener = this;
         gameController.UIController.GameUIController.GameView.ShowView();
+        this.gameController.ScoreController.ScoreListener = this;
+        gameController.ScoreController.StartLap("Player 1");
         RegisterInputs();
     }
 
@@ -118,6 +120,8 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     } 
     #endregion
 
+    #region IScoreListener implementation
+
     public void UpdateScore(Score score)
     {
         this.gameController.UIController.GameUIController.GameView.UpdateScore(score);
@@ -132,4 +136,6 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     {
         gameController.ScoreController.ArrivedAtStation(playerName, numberOfNpcOnBoard);
     }
+
+    #endregion
 }
