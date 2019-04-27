@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 2
+  outlineMode: 4
   outlineColor: {r: 1, g: 0.9745827, b: 0, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
@@ -783,7 +783,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 699179f1eb6f02d43a3200a8d446affb, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b9fa5f0259ca7f84f8c52408b2638a78, type: 2}
+      objectReference: {fileID: 2100000, guid: 39cc9fcee4eb85f47a32ee4a02a00340, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 699179f1eb6f02d43a3200a8d446affb, type: 3}
 --- !u!4 &3377914589852175203 stripped

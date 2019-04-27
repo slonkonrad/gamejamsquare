@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4823560141741895123}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!136 &1396110906
 CapsuleCollider:
@@ -76,6 +76,7 @@ Transform:
   m_LocalPosition: {x: 4.83, y: 10, z: -20.17}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
+  - {fileID: 6441851140567146665}
   - {fileID: 4823560142348696031}
   - {fileID: 4823560143708661624}
   - {fileID: 1396110905}
@@ -123,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 2
+  outlineMode: 4
   outlineColor: {r: 0, g: 0.0967958, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
@@ -315,7 +316,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4823560142348696031}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4823560141984833406
 MeshFilter:
@@ -392,7 +393,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4823560142348696031}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4823560142261244552
 MeshFilter:
@@ -467,13 +468,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6441851140567146665}
   - {fileID: 4823560141984833376}
   - {fileID: 4823560143590029978}
   - {fileID: 4823560142261244554}
   - {fileID: 4823560143677066794}
   m_Father: {fileID: 4823560141741895123}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4823560143544919737
 GameObject:
@@ -535,7 +535,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4823560142348696031}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4823560143590029976
 MeshFilter:
@@ -612,7 +612,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4823560142348696031}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4823560143677066792
 MeshFilter:
@@ -691,7 +691,7 @@ Transform:
   - {fileID: 4823560143752846680}
   - {fileID: 4823560143544919734}
   m_Father: {fileID: 4823560141741895123}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4823560143752846683
 GameObject:
@@ -728,7 +728,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4823560142348696031}
+    m_TransformParent: {fileID: 4823560141741895123}
     m_Modifications:
     - target: {fileID: 100000, guid: 699179f1eb6f02d43a3200a8d446affb, type: 3}
       propertyPath: m_Name
@@ -764,15 +764,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 699179f1eb6f02d43a3200a8d446affb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 699179f1eb6f02d43a3200a8d446affb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 699179f1eb6f02d43a3200a8d446affb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 699179f1eb6f02d43a3200a8d446affb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -794,6 +794,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 699179f1eb6f02d43a3200a8d446affb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b9fa5f0259ca7f84f8c52408b2638a78, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 699179f1eb6f02d43a3200a8d446affb, type: 3}
 --- !u!4 &6441851140567146665 stripped
