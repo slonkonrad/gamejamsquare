@@ -21,7 +21,7 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
         RegisterInputs();
         this.gameController.SoundController.playSound(Keys.Sounds.Backgrounds.GAME_BACKGROUND);
 
-        this.gameController.RaceController.scoreListener = this;
+        //this.gameController.RaceController.scoreListener = this;
 
         this.gameController.PathController.Initialise();
         this.gameController.PathController.StarthHumans();
