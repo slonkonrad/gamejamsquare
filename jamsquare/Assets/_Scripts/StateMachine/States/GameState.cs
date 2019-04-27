@@ -25,10 +25,15 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     public override void UpdateState()
     {
         base.UpdateState();
-        gameController.PlayerOneCarController.UpdateCarPosition(playerOneReceivedTriggerInput,playerOneReceivedLeftAnalogInput);
-        gameController.PlayerTwoCarController.UpdateCarPosition(playerTwoReceivedTriggerInput, playerTwoReceivedLeftAnalogInput);
         gameController.PlayerOneInputController.UpdateInputs();
         gameController.PlayerTwoInputController.UpdateInputs();
+    }
+
+    public override void FixedUpdateState()
+    {
+        base.FixedUpdateState();
+        gameController.PlayerOneCarController.UpdateCarPosition(playerOneReceivedTriggerInput, playerOneReceivedLeftAnalogInput);
+        gameController.PlayerTwoCarController.UpdateCarPosition(playerTwoReceivedTriggerInput, playerTwoReceivedLeftAnalogInput);
     }
 
     public override void DeinitState()
