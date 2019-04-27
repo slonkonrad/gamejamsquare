@@ -10,62 +10,99 @@ public class CarController<T> : MonoBehaviour where T : BaseCar
     {
         this.car = car;
     }
+    private Rigidbody body;
+    private float deadZone = 0.1f;
+    private float thrust = 0f;
 
-    private float horizontalInput;
-    private float verticalInput;
-    private float steeringAngle;
+    private float turnValue = 0f;
 
-    private void UpdateInputs(InputController<BaseInput>.TriggerInput receivedTriggerInput,
-        InputController<BaseInput>.LeftAnalogInput receivedLeftAnalogInput)
+    private int layerMask;
+
+    void Start()
     {
-       
-        if (receivedTriggerInput.RT > 0)
-            verticalInput = receivedTriggerInput.RT;
-        else if (receivedTriggerInput.LT > 0)
-            verticalInput = -receivedTriggerInput.LT;
-        
-        horizontalInput = receivedLeftAnalogInput.leftAnalogH;
-        Debug.Log(horizontalInput);
+        body = car.carRB;
+        body.centerOfMass = Vector3.down;
+
+        layerMask = 512;
+        layerMask = ~layerMask;
     }
 
-    private void Steer()
+    public void UpdateInputs(InputController<BaseInput>.TriggerInput receivedTriggerInput,
+       InputController<BaseInput>.LeftAnalogInput receivedLeftAnalogInput)
     {
-        steeringAngle = car.maxSteerAngle * horizontalInput;
-        car.frontDriverWheel.steerAngle = steeringAngle;
-        car.frontPassangerWheel.steerAngle = steeringAngle;
+        thrust = 0.0f;
+        float acceleration;
+        if (receivedTriggerInput.RT > deadZone)
+        {
+            acceleration = receivedTriggerInput.RT;
+            thrust = acceleration * car.forwardAcceleration;
+        }
+        else if (receivedTriggerInput.LT > deadZone)
+        {
+            acceleration = -receivedTriggerInput.LT;
+            thrust = acceleration * car.reverseAcceleration;
+        }
+
+        turnValue = 0.0f;
+        float turnAxis = receivedLeftAnalogInput.leftAnalogH;
+        if (Mathf.Abs(turnAxis) > deadZone)
+            turnValue = turnAxis;
     }
 
-    private void Accelerate()
+    public void UpdatePhysicsCalculation()
     {
-        car.frontDriverWheel.motorTorque = verticalInput * car.motorForce;
-        car.frontPassangerWheel.motorTorque = verticalInput * car.motorForce;
-    }
+        RaycastHit hit;
+        bool grounded = false;
+        for (int i = 0; i < car.hoverPoints.Length; i++)
+        {
+            var hoverPoint = car.hoverPoints[i];
+            if (Physics.Raycast(hoverPoint.transform.position, -Vector3.up, out hit, car.hoverHeight, layerMask))
+            {
+                body.AddForceAtPosition(Vector3.up * car.hoverForce * (1.0f - (hit.distance / car.hoverHeight)), hoverPoint.transform.position);
+                grounded = true;
+            }
+            else
+            {
+                if (car.carT.position.y > hoverPoint.transform.position.y)
+                {
+                    body.AddForceAtPosition(hoverPoint.transform.up * car.gravityForce, hoverPoint.transform.position);
+                }
+                else
+                {
+                    body.AddForceAtPosition(hoverPoint.transform.up * -car.gravityForce, hoverPoint.transform.position);
+                }
+            }
+        }
 
-    private void UpdateWheelPoses()
-    {
-        UpdateWheelPosition(car.frontDriverWheel, car.frontDriverTransform);
-        UpdateWheelPosition(car.frontPassangerWheel, car.frontPassangerTransform);
-        UpdateWheelPosition(car.backDriverWheel, car.backDriverTransform);
-        UpdateWheelPosition(car.backPassangerWheel, car.backPassangerTransform);
-    }
+        if (grounded)
+        {
+            body.drag = car.groundedDrag;
+        }
+        else
+        {
+            body.drag = 0.1f;
+            thrust /= 100f;
+            turnValue /= 100f;
+        }
 
-    private void UpdateWheelPosition(WheelCollider wheelCollider, Transform wheelTransform)
-    {
-        Vector3 tempPos = wheelTransform.position;
-        Quaternion tempQuat = wheelTransform.rotation;
+        if (Mathf.Abs(thrust) > 0)
+        {
+            body.AddForce(car.carT.forward * thrust);
+        }
+            
 
-        wheelCollider.GetWorldPose(out tempPos, out tempQuat);
+        if (turnValue > 0)
+        {
+            body.AddRelativeTorque(Vector3.up * turnValue * car.turnStrength);
+        }
+        else if (turnValue < 0)
+        {
+            body.AddRelativeTorque(Vector3.up * turnValue * car.turnStrength);
+        }
 
-        wheelTransform.position = tempPos;
-        wheelTransform.rotation = tempQuat;
-    }
-
-    public void UpdateCarPosition(InputController<BaseInput>.TriggerInput receivedTriggerInput,
-        InputController<BaseInput>.LeftAnalogInput receivedLeftAnalogInput)
-    {
-        UpdateInputs(receivedTriggerInput, receivedLeftAnalogInput);
-        Steer();
-        Accelerate();
-        UpdateWheelPoses();
+        if (body.velocity.sqrMagnitude > (body.velocity.normalized * car.maxVelocity).sqrMagnitude)
+        {
+            body.velocity = body.velocity.normalized * car.maxVelocity;
+        }
     }
 }
