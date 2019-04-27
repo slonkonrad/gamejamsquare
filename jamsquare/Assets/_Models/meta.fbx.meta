@@ -1,19 +1,32 @@
 fileFormatVersion: 2
-guid: dfe001d616e65ec4bbad49c8c06c4ffb
+guid: 547712d591e9a35429ce73be95f84f98
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: No Name
-    2100002: Orange
-    2100004: Grey
+    2100000: DarkGrey
+    2100002: Black
+    2100004: White
     2300000: //RootNode
     3300000: //RootNode
-    4300000: BezierCurve.001
-    4300002: Tor
-    4300004: Tor_Col
-  externalObjects: {}
+    4300000: Meta
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black
+    second: {fileID: 2100000, guid: e65a3e9e91e50ee4995971b1fb5fa59c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DarkGrey
+    second: {fileID: 2100000, guid: 41166e9cce6a91c4fbfe115bd88d5240, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White
+    second: {fileID: 2100006, guid: d7d9bc6fb4ccea742a9d9d3b222308d4, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

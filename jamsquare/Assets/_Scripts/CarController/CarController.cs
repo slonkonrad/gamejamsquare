@@ -31,7 +31,7 @@ public class CarController<T> : MonoBehaviour where T : BaseCar
        InputController<BaseInput>.LeftAnalogInput receivedLeftAnalogInput)
     {
         thrust = 0.0f;
-        float acceleration;
+        float acceleration = 0;
         if (receivedTriggerInput.RT > deadZone)
         {
             acceleration = receivedTriggerInput.RT;
@@ -47,6 +47,9 @@ public class CarController<T> : MonoBehaviour where T : BaseCar
         float turnAxis = receivedLeftAnalogInput.leftAnalogH;
         if (Mathf.Abs(turnAxis) > deadZone)
             turnValue = turnAxis;
+
+        if (acceleration < 0)
+            turnValue = -turnValue;
     }
 
     public void UpdatePhysicsCalculation()
