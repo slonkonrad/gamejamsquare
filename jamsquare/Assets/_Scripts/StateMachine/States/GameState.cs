@@ -16,9 +16,12 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
         this.gameController.UIController.GameUIController.GameView.listener = this;
         gameController.UIController.GameUIController.GameView.ShowView();
         this.gameController.ScoreController.ScoreListener = this;
-        gameController.ScoreController.StartLap("Player 1");
+        gameController.ScoreController.StartLap(Keys.Players.PLAYER_ONE);
+        gameController.ScoreController.StartLap(Keys.Players.PLAYER_TWO);
         RegisterInputs();
         this.gameController.SoundController.playSound(Keys.Sounds.Backgrounds.GAME_BACKGROUND);
+
+        this.gameController.RaceController.scoreListener = this;
 
         this.gameController.PathController.Initialise();
         this.gameController.PathController.StarthHumans();
@@ -180,14 +183,14 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
         this.gameController.UIController.GameUIController.GameView.UpdateScore(score);
     }
 
-    public void NpcKilled(string playerName)
+    public void NpcKilled(int playerId)
     {
-        gameController.ScoreController.NpcKilled(playerName);
+        gameController.ScoreController.NpcKilled(playerId);
     }
 
-    public void FinishedLap(string playerName, int numberOfNpcOnBoard)
+    public void FinishedLap(int playerId, int numberOfNpcOnBoard)
     {
-        gameController.ScoreController.ArrivedAtStation(playerName, numberOfNpcOnBoard);
+        gameController.ScoreController.ArrivedAtStation(playerId, numberOfNpcOnBoard);
     }
 
     #endregion

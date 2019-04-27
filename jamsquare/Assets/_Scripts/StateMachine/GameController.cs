@@ -37,6 +37,11 @@ public class GameController : MonoBehaviour
     private PathController pathController;
     public PathController PathController => pathController;
 
+    [SerializeField]
+    private RaceController raceController;
+
+    public RaceController RaceController => raceController;
+
     private void Awake()
     {
         Initialization();

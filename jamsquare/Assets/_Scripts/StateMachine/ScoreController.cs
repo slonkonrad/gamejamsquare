@@ -5,33 +5,34 @@ using UnityEngine;
 public class ScoreController : MonoBehaviour
 { 
     public IScoreListener ScoreListener { get; set; }
-    private Dictionary<string, Score> playerScores;
+    private Dictionary<int, Score> playerScores;
 
     [SerializeField]
     private ScoreConfig scoreConfig;
 
     private void Awake()
     {
-        playerScores = new Dictionary<string, Score>()
+        playerScores = new Dictionary<int, Score>()
         {
-            {"Player 1", new Score(scoreConfig) }
+            {Keys.Players.PLAYER_ONE, new Score(scoreConfig) },
+            {Keys.Players.PLAYER_TWO, new Score(scoreConfig) }
         };
     }
 
 
-    public void NpcKilled(string playerName)
+    public void NpcKilled(int playerId)
     {
-        playerScores[playerName].NpcKilled();
-        ScoreListener.UpdateScore(playerScores[playerName]);
+        playerScores[playerId].NpcKilled();
+        ScoreListener.UpdateScore(playerScores[playerId]);
     }
 
-    public void ArrivedAtStation(string playerName, int numberOfNpcOnBoard)
+    public void ArrivedAtStation(int playerId, int numberOfNpcOnBoard)
     {
-        playerScores[playerName].FinishedLap(numberOfNpcOnBoard);
-        ScoreListener.UpdateScore(playerScores[playerName]);
+        playerScores[playerId].FinishedLap(numberOfNpcOnBoard);
+        ScoreListener.UpdateScore(playerScores[playerId]);
     }
-    public void StartLap(string playerName)
+    public void StartLap(int playerId)
     {
-        playerScores[playerName].StartLap();
+        playerScores[playerId].StartLap();
     }
 }
