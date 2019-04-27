@@ -63,4 +63,10 @@ public class GameController : MonoBehaviour
         if (currentState != null)
             currentState.UpdateState();
     }
+
+    private void FixedUpdate()
+    {
+        if (currentState != null)
+            currentState.FixedUpdateState();
+    }
 }
