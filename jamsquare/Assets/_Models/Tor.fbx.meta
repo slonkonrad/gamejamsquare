@@ -6,10 +6,13 @@ ModelImporter:
     100000: //RootNode
     400000: //RootNode
     2100000: No Name
+    2100002: Orange
+    2100004: Grey
     2300000: //RootNode
     3300000: //RootNode
     4300000: BezierCurve.001
     4300002: Tor
+    4300004: Tor_Col
   externalObjects: {}
   materials:
     importMaterials: 1
