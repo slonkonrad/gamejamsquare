@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CapsuleCollider))]
 public class Human : MonoBehaviour
 {
     public Rigidbody rb;
@@ -23,6 +24,7 @@ public class Human : MonoBehaviour
     public void Initialise()
     {
         rb = GetComponent<Rigidbody>();
+        currentTarget.GetComponentInParent<Target>();
         currentState = new GoToTargetState();
         currentState.Initialise(this,currentTarget);
 
