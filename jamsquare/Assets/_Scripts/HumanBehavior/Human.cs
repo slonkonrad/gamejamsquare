@@ -36,17 +36,19 @@ public class Human : MonoBehaviour
     }
     void CustomFixedUpdate()
     {
-        currentState.FixedUpdateState();
+        if(currentState!=null)
+            currentState.FixedUpdateState();
     }
     void CustomUpdate()
     {
-        currentState.UpdateState();
+        if(currentState!=null)
+            currentState.UpdateState();
     }
 
     public void SetGoToTargetState(Target target, float waitTime)
     {
-            currentState.Deinitialise();
-            currentState = new GoToTargetState();
+        currentState.Deinitialise();
+        currentState = new GoToTargetState();
         currentState.myWaitTime = waitTime;
         currentState.Initialise(this, target);
         
@@ -57,16 +59,6 @@ public class Human : MonoBehaviour
         currentState = new WaitState();
         currentState.myWaitTime = waitTime;
         currentState.Initialise(this, target);
-        
-
-
     }
-
-
-
-
-
-
-
 
 }
