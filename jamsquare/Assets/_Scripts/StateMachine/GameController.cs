@@ -21,13 +21,9 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private PlayerTwoCar playerTwoCarController;
     public PlayerTwoCar PlayerTwoCarController => playerTwoCarController;
-    [SerializeField] private CarController carController;
-    public CarController CarController => carController;
 
     [SerializeField] private ScoreController scoreController;
     public ScoreController ScoreController => scoreController;
-
-
 
     [SerializeField] 
     private ParticleController particleController;
