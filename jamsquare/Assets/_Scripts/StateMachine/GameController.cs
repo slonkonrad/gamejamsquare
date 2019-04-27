@@ -4,16 +4,42 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public IInuptController playerOneInputListener;
+    public IInuptController playerTwoInputListener;
+
     [SerializeField] private UIController uiController;
     public UIController UIController => uiController;
+
+    [SerializeField] private PlayerOneInputs playerOneInputController;
+    public PlayerOneInputs PlayerOneInputController => playerOneInputController;
+
+    [SerializeField] private PlayerTwoInputs playerTwoInputController;
+    public PlayerTwoInputs PlayerTwoInputController => playerTwoInputController;
+
+    [SerializeField] private CarController carController;
+    public CarController CarController => carController;
+
+    [SerializeField] private ScoreController scoreController;
+    public ScoreController ScoreController => scoreController;
+
+
+    [SerializeField] 
+    private ParticleController particleController;
+    public ParticleController ParticleController => particleController;
+
+    [SerializeField] 
+    private SoundController soundController;
+    public SoundController SoundController => soundController;
 
     private void Awake()
     {
         Initialization();
     }
-
+    
     private void Initialization()
     {
+        playerOneInputListener = PlayerOneInputController;
+        playerTwoInputListener = PlayerTwoInputController;
         ChangeState(new MenuState());
     }
 

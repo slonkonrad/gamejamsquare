@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IGameView
 {
     void SetMenuState();
+    void UpdateScore(Score score);
 }
