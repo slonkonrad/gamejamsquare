@@ -7,24 +7,57 @@ ModelImporter:
     100002: Terrain
     100004: Tor
     100006: Water
+    100008: BussStop_left
+    100010: BussStop_rigt
+    100012: curve
+    100014: Part
+    100016: Pedestrians
     400000: //RootNode
     400002: Terrain
     400004: Tor
     400006: Water
+    400008: BussStop_left
+    400010: BussStop_rigt
+    400012: curve
+    400014: Part
+    400016: Pedestrians
     2100000: water
     2100002: No Name
     2100004: Water
     2100006: Terrain
     2100008: Tor
+    2100010: White
+    2100012: Red
+    2100014: Black
+    2100016: DarkGrey
+    2100018: Grey
+    2100020: Blue
+    2100022: Orange
     2300000: Terrain
     2300002: Tor
     2300004: Water
+    2300006: BussStop_left
+    2300008: BussStop_rigt
+    2300010: curve
+    2300012: Part
+    2300014: Pedestrians
     3300000: Terrain
     3300002: Tor
     3300004: Water
+    3300006: BussStop_left
+    3300008: BussStop_rigt
+    3300010: curve
+    3300012: Part
+    3300014: Pedestrians
     4300000: Water
     4300002: Terrain
     4300004: Tor
+    4300006: curve
+    4300008: Pedestrians
+    4300010: BussStop_rigt
+    4300012: BussStop_left
+    4300014: Part
+    2186277476908879412: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material

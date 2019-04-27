@@ -3,10 +3,11 @@ using System;
 using System.Collections;
 
 public class SplitScreen : MonoBehaviour {
+    public Vector3 offset;
 
-	/*Reference both the transforms of the two players on screen.
+    /*Reference both the transforms of the two players on screen.
 	Necessary to find out their current positions.*/
-	public Transform player1;
+    public Transform player1;
 	public Transform player2;
 
 	//The distance at which the splitscreen will be activated.
@@ -105,7 +106,7 @@ public class SplitScreen : MonoBehaviour {
 			offset2.x = Mathf.Clamp(offset.x,-splitDistance/2,splitDistance/2);
 			offset2.y = Mathf.Clamp(offset.y,-splitDistance/2,splitDistance/2);
 			offset2.z = Mathf.Clamp(offset.z,-splitDistance/2,splitDistance/2);
-			Vector3 midPoint2 = player2.position - offset;
+			Vector3 midPoint2 = player2.position - offset2;
 
 			//Sets the splitter and camera to active and sets the second camera position as to avoid lerping continuity errors.
 			if (splitter.activeSelf == false) {
@@ -117,7 +118,7 @@ public class SplitScreen : MonoBehaviour {
 
 			} else {
                 //Lerps the second cameras position and rotation to that of the second midpoint, so relative to the second player.
-                camera2.transform.position = Vector3.Lerp(camera2.transform.position, midPoint2 + new Vector3(0, 20, -5), Time.deltaTime * 5);
+                camera2.transform.position = Vector3.Lerp(camera2.transform.position, midPoint2 + this.offset, Time.deltaTime * 5);
                 Quaternion newRot2 = Quaternion.LookRotation(midPoint2 - camera2.transform.position);
                 camera2.transform.rotation = Quaternion.Lerp(camera2.transform.rotation, newRot2, Time.deltaTime * 5);
             }
@@ -131,7 +132,7 @@ public class SplitScreen : MonoBehaviour {
 
         /*Lerps the first cameras position and rotation to that of the second midpoint, so relative to the first player
 		or when both players are in view it lerps the camera to their midpoint.*/
-        camera1.transform.position = Vector3.Lerp(camera1.transform.position, midPoint + new Vector3(0, 20, -5), Time.deltaTime * 5);
+        camera1.transform.position = Vector3.Lerp(camera1.transform.position, midPoint + this.offset, Time.deltaTime * 5);
         Quaternion newRot = Quaternion.LookRotation(midPoint - camera1.transform.position);
         camera1.transform.rotation = Quaternion.Lerp(camera1.transform.rotation, newRot, Time.deltaTime * 5);
     }
