@@ -103,12 +103,12 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     #region IBumpers implementation
     public void LB_ButtonInputReceived<T>(T player) where T : BaseInput
     {
-        Debug.Log("LB: " + player.PlayerID);
+     //   Debug.Log("LB: " + player.PlayerID);
     }
 
     public void RB_ButtonInputReceived<T>(T player) where T : BaseInput
     {
-        Debug.Log("RB: " + player.PlayerID);
+     //   Debug.Log("RB: " + player.PlayerID);
     }
     #endregion
 
@@ -117,7 +117,6 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     {
         if (player.PlayerID.Equals(Keys.Players.PLAYER_ONE))
         {
-            Debug.Log("TEST");
             playerOneReceivedTriggerInput.LT = triggerInputReceived.LT;
             playerOneReceivedTriggerInput.RT = triggerInputReceived.RT;
         }
@@ -136,6 +135,9 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
         {
             playerOneReceivedLeftAnalogInput.leftAnalogH = leftAnalogInputReceived.leftAnalogH;
             playerOneReceivedLeftAnalogInput.leftAnalogV = leftAnalogInputReceived.leftAnalogV;
+
+            if (playerOneReceivedLeftAnalogInput.leftAnalogH > -1 && playerOneReceivedLeftAnalogInput.leftAnalogH < 1)
+                playerOneReceivedLeftAnalogInput.leftAnalogH = 0;
         }
         else
         {
@@ -148,8 +150,8 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     #region IRightAnalog implementation
     public void UpdateRightAnalogInput<T>(InputController<T>.RightAnalogInput rightAnalogInputReceived, T player) where T : BaseInput
     {
-        Debug.Log("RightAnalogH: " + rightAnalogInputReceived.rightAnalogH + "|| player: " + player.PlayerID);
-        Debug.Log("RightAnalogV: " + rightAnalogInputReceived.rightAnalogV + "|| player: " + player.PlayerID);
+        //Debug.Log("RightAnalogH: " + rightAnalogInputReceived.rightAnalogH + "|| player: " + player.PlayerID);
+        //Debug.Log("RightAnalogV: " + rightAnalogInputReceived.rightAnalogV + "|| player: " + player.PlayerID);
     } 
     #endregion
 
