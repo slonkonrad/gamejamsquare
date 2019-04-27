@@ -10,19 +10,42 @@ public class GoToTargetState : BaseHState
     {
         myHuman = human;
         myTarget = target;
-        Animate();
+        StopAnimation();
+        AnimateIdle();
+        checkingTime = true;
     }
+    float timer = 0;
+    bool checkingTime;
+    bool timerDone;
 
     public override void FixedUpdateState()
     {
+
+        if (checkingTime)
+        {
+            timer += Time.deltaTime;
+            if (timer >= myWaitTime
+                )
+            {
+                timerDone = true;
+                checkingTime = false;
+                timer = 0;
+            StopAnimation();
+            Animate();
+            }
+        }
+
+        if (timerDone)
+        {
+            //DoSomething()
         GoToTarget();
+        }
 
     }
 
 
     public override void UpdateState()
     {
-        ChangeTarget();
     }
 
     void GoToTarget()
@@ -49,15 +72,30 @@ public class GoToTargetState : BaseHState
     {
         if (!myHuman.hasAnimation)
         {
-            myHuman.animator.SetTrigger(Keys.Animations.RUN_ANIMATIONS[Random.Range(0, Keys.Animations.RUN_ANIMATIONS.Length)]);
+            int animNumber = Random.Range(0, Keys.Animations.RUN_ANIMATIONS.Length);
+            myHuman.animator.SetTrigger(Keys.Animations.RUN_ANIMATIONS[animNumber]);
+            myHuman.speed = Keys.Animations.RUN_ANIMARIONS_SPEED[animNumber];
+            myHuman.hasAnimation = true;
+        }
+    }
+    void StopAnimation()
+    {
+        myHuman.hasAnimation = false;
+        myHuman.animator.SetTrigger(Keys.Animations.STOP_ANIMATIONS);
+
+    }
+    void AnimateIdle()
+    {
+        if (!myHuman.hasAnimation)
+        {
+            myHuman.animator.SetTrigger(Keys.Animations.IDLE_ANIMATIONS[Random.Range(0, Keys.Animations.IDLE_ANIMATIONS.Length)]);
             myHuman.hasAnimation = true;
         }
     }
 
 
-    void ChangeTarget()
+    public override void ChangeTarget()
     {
-        if (Vector3.Distance(myTarget.transform.position, myHuman.transform.position) < myTarget.range)
                 myHuman.currentTarget = myTarget.GetNextTarget(myHuman);
     }
 

@@ -4131,6 +4131,7 @@ MonoBehaviour:
   previousTarget: {fileID: 1216945883}
   nextTarget: {fileID: 814292013}
   range: 2
+  waitTime: 2
   isStartTarget: 0
   isEndTarget: 0
 --- !u!4 &797595210 stripped
@@ -4157,10 +4158,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cb0b84f41552e4f8b8eed10ac167b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myStateType: 1
+  myStateType: 0
   previousTarget: {fileID: 1216945883}
   nextTarget: {fileID: 797595207}
   range: 2
+  waitTime: 20
   isStartTarget: 0
   isEndTarget: 1
 --- !u!4 &814292016 stripped
@@ -4757,6 +4759,7 @@ MonoBehaviour:
   previousTarget: {fileID: 1791263815}
   nextTarget: {fileID: 1650633671}
   range: 2
+  waitTime: 0
   isStartTarget: 0
   isEndTarget: 0
 --- !u!4 &910278820 stripped
@@ -6457,6 +6460,7 @@ MonoBehaviour:
   previousTarget: {fileID: 1607592987}
   nextTarget: {fileID: 797595207}
   range: 2
+  waitTime: 0
   isStartTarget: 0
   isEndTarget: 0
 --- !u!4 &1216945886 stripped
@@ -7926,17 +7930,17 @@ PrefabInstance:
     - target: {fileID: 5133036559508986982, guid: 2a5f096a2a4f9774a9367070656bb0c0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.58
+      value: 22.92
       objectReference: {fileID: 0}
     - target: {fileID: 5133036559508986982, guid: 2a5f096a2a4f9774a9367070656bb0c0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3800006
+      value: 0.899
       objectReference: {fileID: 0}
     - target: {fileID: 5133036559508986982, guid: 2a5f096a2a4f9774a9367070656bb0c0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.33
+      value: -14.34
       objectReference: {fileID: 0}
     - target: {fileID: 5133036559508986982, guid: 2a5f096a2a4f9774a9367070656bb0c0,
         type: 3}
@@ -7988,6 +7992,71 @@ PrefabInstance:
         'mixamorig_LeftToeBase'\n\tTransform 'mixamorig_RightForeArm'\n\tTransform
         'Human_riged'\n\tTransform 'mixamorig_Spine1'\n\tTransform 'mixamorig_Spine'\n\tand
         more ...\n\tFrom animation clip 'Walking'"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133036561159840249, guid: 2a5f096a2a4f9774a9367070656bb0c0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133036561159840249, guid: 2a5f096a2a4f9774a9367070656bb0c0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133036561159840249, guid: 2a5f096a2a4f9774a9367070656bb0c0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 1.491243
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133036561159840249, guid: 2a5f096a2a4f9774a9367070656bb0c0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -6.279196
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133036561159840249, guid: 2a5f096a2a4f9774a9367070656bb0c0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -1.1216484
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133036561159840245, guid: 2a5f096a2a4f9774a9367070656bb0c0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 2.8280494
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133036561159840245, guid: 2a5f096a2a4f9774a9367070656bb0c0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -6.879461
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133036561159840245, guid: 2a5f096a2a4f9774a9367070656bb0c0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -3.7846413
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133036561159840225, guid: 2a5f096a2a4f9774a9367070656bb0c0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -12.201569
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133036561159840225, guid: 2a5f096a2a4f9774a9367070656bb0c0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -12.575784
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133036561159840225, guid: 2a5f096a2a4f9774a9367070656bb0c0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 91.71752
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133036561159840201, guid: 2a5f096a2a4f9774a9367070656bb0c0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -129.57115
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133036561159840201, guid: 2a5f096a2a4f9774a9367070656bb0c0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -131.56845
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a5f096a2a4f9774a9367070656bb0c0, type: 3}
@@ -8885,6 +8954,7 @@ MonoBehaviour:
   previousTarget: {fileID: 1791263815}
   nextTarget: {fileID: 1216945883}
   range: 2
+  waitTime: 0
   isStartTarget: 0
   isEndTarget: 0
 --- !u!4 &1607592990 stripped
@@ -9170,6 +9240,7 @@ MonoBehaviour:
   previousTarget: {fileID: 1791263815}
   nextTarget: {fileID: 1607592987}
   range: 2
+  waitTime: 0
   isStartTarget: 0
   isEndTarget: 0
 --- !u!4 &1650633674 stripped
@@ -9909,6 +9980,7 @@ MonoBehaviour:
   previousTarget: {fileID: 3686494289427961922}
   nextTarget: {fileID: 910278817}
   range: 2
+  waitTime: 0
   isStartTarget: 0
   isEndTarget: 0
 --- !u!4 &1791263818 stripped
@@ -11960,6 +12032,7 @@ MonoBehaviour:
   previousTarget: {fileID: 910278817}
   nextTarget: {fileID: 1791263815}
   range: 2
+  waitTime: 0
   isStartTarget: 1
   isEndTarget: 0
 --- !u!4 &3686494289427961925 stripped

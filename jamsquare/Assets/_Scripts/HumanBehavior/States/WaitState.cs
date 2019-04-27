@@ -10,19 +10,26 @@ public class WaitState : BaseHState
     {
         myHuman = human;
         myTarget = target;
+
         Animate();
+        ChangeTarget();
+
     }
+
 
     public override void FixedUpdateState()
     {
-        throw new System.NotImplementedException();
     }
-
 
     public override void UpdateState()
     {
-        throw new System.NotImplementedException();
+
     }
+    public override void ChangeTarget()
+    {
+        myHuman.currentTarget = myTarget.GetNextTarget(myHuman);
+    }
+
     void Animate()
     {
         if (myTarget.isStartTarget)
