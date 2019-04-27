@@ -10,8 +10,12 @@ public class HittedState : BaseHState
     {
         myHuman = human;
         myTarget = target;
+        myHuman.gameObject.tag = "Body";
+        myHuman.animator.enabled = false;
+        myHuman.rb.constraints = RigidbodyConstraints.None;
+        myHuman.PlayParticle();
+        //myHuman.Hide();
 
-        ChangeTarget();
 
     }
 

@@ -139,8 +139,8 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     #region ILeftAnalog implementation
     public void UpdateLeftAnalogInput<T>(InputController<T>.LeftAnalogInput leftAnalogInputReceived, T player) where T : BaseInput
     {
-        Debug.Log("LeftAnalogH: " + leftAnalogInputReceived.leftAnalogH + "|| player: " + player.PlayerID);
-        Debug.Log("LeftAnalogV: " + leftAnalogInputReceived.leftAnalogV + "|| player: " + player.PlayerID);
+        //Debug.Log("LeftAnalogH: " + leftAnalogInputReceived.leftAnalogH + "|| player: " + player.PlayerID);
+        //Debug.Log("LeftAnalogV: " + leftAnalogInputReceived.leftAnalogV + "|| player: " + player.PlayerID);
 
         if (player.PlayerID.Equals(Keys.Players.PLAYER_ONE))
         {

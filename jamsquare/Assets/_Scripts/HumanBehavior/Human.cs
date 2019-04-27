@@ -11,6 +11,7 @@ public class Human : MonoBehaviour
     [SerializeField]
     public float speed = 2;
 
+
     public bool hasAnimation = false;
     [SerializeField]
     public float maxVelocity;
@@ -24,6 +25,7 @@ public class Human : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         currentState = new GoToTargetState();
         currentState.Initialise(this,currentTarget);
+
     }
 
     void FixedUpdate()
@@ -42,6 +44,22 @@ public class Human : MonoBehaviour
     {
         currentState.UpdateState();
     }
+    public void PlayParticle()
+    {
+
+    }
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.collider.tag == "Bus")
+        {
+            SetHittedState(currentTarget,1);
+
+        }
+    }
 
     public void SetGoToTargetState(Target target, float waitTime)
     {
@@ -58,6 +76,16 @@ public class Human : MonoBehaviour
         currentState.myWaitTime = waitTime;
         currentState.Initialise(this, target);
         
+
+
+    }
+    public void SetHittedState(Target target, float waitTime)
+    {
+        currentState.Deinitialise();
+        currentState = new HittedState();
+        currentState.myWaitTime = waitTime;
+        currentState.Initialise(this, target);
+
 
 
     }
