@@ -10,6 +10,7 @@ public class GoToTargetState : BaseHState
     {
         myHuman = human;
         myTarget = target;
+        Animate();
     }
 
     public override void FixedUpdateState()
@@ -31,19 +32,28 @@ public class GoToTargetState : BaseHState
         Debug.DrawLine(myHuman.transform.position, pos, Color.red);
     }
 
-    public float DEBUG_currentVelocity;
     void Move(Vector3 pos)
     {
-        float lerpValue = ((myHuman.maxVelocity - myHuman.rb.velocity.magnitude) / myHuman.maxVelocity) * myHuman.acceleration;
-        if (myHuman.rb.velocity.magnitude >= myHuman.maxVelocity)
+        float velocityMagnitude = myHuman.rb.velocity.magnitude;
+        float lerpValue = ((myHuman.maxVelocity - velocityMagnitude) / myHuman.maxVelocity) * myHuman.acceleration;
+        if ( velocityMagnitude >= myHuman.maxVelocity)
             lerpValue = 1;
 
         Vector3 targetVector = myTarget.transform.position - myHuman.transform.position;
-        myHuman.rb.velocity = Vector3.Normalize(targetVector) * Mathfx.Lerp(myHuman.rb.velocity.magnitude, myHuman.speed, lerpValue);
+        myHuman.rb.velocity = Vector3.Normalize(targetVector) * myHuman.speed;
         myHuman.model.rotation = Quaternion.LookRotation(targetVector);
 
-        DEBUG_currentVelocity = myHuman.rb.velocity.magnitude;
     }
+
+    void Animate()
+    {
+        if (!myHuman.hasAnimation)
+        {
+            myHuman.animator.SetTrigger(Keys.Animations.RUN_ANIMATIONS[Random.Range(0, Keys.Animations.RUN_ANIMATIONS.Length)]);
+            myHuman.hasAnimation = true;
+        }
+    }
+
 
     void ChangeTarget()
     {

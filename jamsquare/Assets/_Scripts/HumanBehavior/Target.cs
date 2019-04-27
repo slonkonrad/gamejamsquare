@@ -7,6 +7,7 @@ public class Target : MonoBehaviour
     public enum StateType
     {
         GoToTarget,
+        Wait,
 
     }
     public StateType myStateType;
@@ -30,12 +31,19 @@ public class Target : MonoBehaviour
     }
     public void OnTargetGet(Human h)
     {
-        switch (myStateType)
+        if (!isEndTarget)
         {
-            case StateType.GoToTarget:
-                Debug.Log("elo0");
-        h.SetGoToTargetState(nextTarget);
-                break;
+            switch (myStateType)
+            {
+                case StateType.GoToTarget:
+                    Debug.Log("elo0");
+                    h.SetGoToTargetState(nextTarget);
+                    break;
+                case StateType.Wait:
+                    Debug.Log("elo1");
+                    h.SetWaitState(nextTarget);
+                    break;
+            }
         }
     }
     public Target GetNextTarget(Human h)

@@ -20,6 +20,9 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
         gameController.ScoreController.StartLap("Player 1");
         RegisterInputs();
         this.gameController.SoundController.playSound("SummerTown");
+
+        this.gameController.PathController.Initialise();
+        this.gameController.PathController.StarthHumans();
     }
 
     public override void UpdateState()
