@@ -16,11 +16,17 @@ public class GameController : MonoBehaviour
     [SerializeField] private PlayerTwoInputs playerTwoInputController;
     public PlayerTwoInputs PlayerTwoInputController => playerTwoInputController;
 
+    [SerializeField] private PlayerOneCar playerOneCarController;
+    public PlayerOneCar PlayerOneCarController => playerOneCarController;
+
+    [SerializeField] private PlayerTwoCar playerTwoCarController;
+    public PlayerTwoCar PlayerTwoCarController => playerTwoCarController;
     [SerializeField] private CarController carController;
     public CarController CarController => carController;
 
     [SerializeField] private ScoreController scoreController;
     public ScoreController ScoreController => scoreController;
+
 
 
     [SerializeField] 
