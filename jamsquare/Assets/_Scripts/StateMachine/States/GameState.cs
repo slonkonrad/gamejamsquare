@@ -28,9 +28,17 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     {
         base.UpdateState();
         gameController.PlayerOneCarController.UpdateInputs(playerOneReceivedTriggerInput, playerOneReceivedLeftAnalogInput);
-        gameController.PlayerTwoCarController.UpdateInputs(playerOneReceivedTriggerInput, playerOneReceivedLeftAnalogInput);
+        gameController.PlayerTwoCarController.UpdateInputs(playerTwoReceivedTriggerInput, playerTwoReceivedLeftAnalogInput);
         gameController.PlayerOneInputController.UpdateInputs();
         gameController.PlayerTwoInputController.UpdateInputs();
+        UpdateCarEngineSound();
+    }
+
+    private void UpdateCarEngineSound()
+    {
+        gameController.SoundController.updateCarEngineSound(
+            gameController.PlayerOneCarController.GetRBLocalVelocityMagnitude(),
+            gameController.PlayerTwoCarController.GetRBLocalVelocityMagnitude());
     }
 
     public override void FixedUpdateState()
