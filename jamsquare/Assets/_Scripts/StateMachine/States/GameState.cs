@@ -19,20 +19,28 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
         gameController.ScoreController.StartLap("Player 1");
         RegisterInputs();
         this.gameController.SoundController.playSound(Keys.Sounds.Backgrounds.GAME_BACKGROUND);
+
+        this.gameController.PathController.Initialise();
+        this.gameController.PathController.StarthHumans();
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
+        gameController.PlayerOneCarController.UpdateInputs(playerOneReceivedTriggerInput, playerOneReceivedLeftAnalogInput);
+        gameController.PlayerTwoCarController.UpdateInputs(playerOneReceivedTriggerInput, playerOneReceivedLeftAnalogInput);
         gameController.PlayerOneInputController.UpdateInputs();
         gameController.PlayerTwoInputController.UpdateInputs();
     }
 
     public override void FixedUpdateState()
     {
+        Debug.Log("LeftAnalogH: " + playerOneReceivedLeftAnalogInput.leftAnalogH);
+        Debug.Log("LeftAnalogV: " + playerOneReceivedLeftAnalogInput.leftAnalogV);
+
         base.FixedUpdateState();
-        gameController.PlayerOneCarController.UpdateCarPosition(playerOneReceivedTriggerInput, playerOneReceivedLeftAnalogInput);
-        gameController.PlayerTwoCarController.UpdateCarPosition(playerTwoReceivedTriggerInput, playerTwoReceivedLeftAnalogInput);   
+        gameController.PlayerOneCarController.UpdatePhysicsCalculation();
+        gameController.PlayerTwoCarController.UpdatePhysicsCalculation();
     }
 
     public override void DeinitState()
@@ -102,12 +110,12 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     #region IBumpers implementation
     public void LB_ButtonInputReceived<T>(T player) where T : BaseInput
     {
-        Debug.Log("LB: " + player.PlayerID);
+     //   Debug.Log("LB: " + player.PlayerID);
     }
 
     public void RB_ButtonInputReceived<T>(T player) where T : BaseInput
     {
-        Debug.Log("RB: " + player.PlayerID);
+     //   Debug.Log("RB: " + player.PlayerID);
     }
     #endregion
 
@@ -116,7 +124,6 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     {
         if (player.PlayerID.Equals(Keys.Players.PLAYER_ONE))
         {
-            Debug.Log("TEST");
             playerOneReceivedTriggerInput.LT = triggerInputReceived.LT;
             playerOneReceivedTriggerInput.RT = triggerInputReceived.RT;
         }
@@ -131,10 +138,16 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     #region ILeftAnalog implementation
     public void UpdateLeftAnalogInput<T>(InputController<T>.LeftAnalogInput leftAnalogInputReceived, T player) where T : BaseInput
     {
+        Debug.Log("LeftAnalogH: " + leftAnalogInputReceived.leftAnalogH + "|| player: " + player.PlayerID);
+        Debug.Log("LeftAnalogV: " + leftAnalogInputReceived.leftAnalogV + "|| player: " + player.PlayerID);
+
         if (player.PlayerID.Equals(Keys.Players.PLAYER_ONE))
         {
             playerOneReceivedLeftAnalogInput.leftAnalogH = leftAnalogInputReceived.leftAnalogH;
             playerOneReceivedLeftAnalogInput.leftAnalogV = leftAnalogInputReceived.leftAnalogV;
+
+            if (playerOneReceivedLeftAnalogInput.leftAnalogH > -1 && playerOneReceivedLeftAnalogInput.leftAnalogH < 1)
+                playerOneReceivedLeftAnalogInput.leftAnalogH = 0;
         }
         else
         {
@@ -147,8 +160,8 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
     #region IRightAnalog implementation
     public void UpdateRightAnalogInput<T>(InputController<T>.RightAnalogInput rightAnalogInputReceived, T player) where T : BaseInput
     {
-        Debug.Log("RightAnalogH: " + rightAnalogInputReceived.rightAnalogH + "|| player: " + player.PlayerID);
-        Debug.Log("RightAnalogV: " + rightAnalogInputReceived.rightAnalogV + "|| player: " + player.PlayerID);
+        //Debug.Log("RightAnalogH: " + rightAnalogInputReceived.rightAnalogH + "|| player: " + player.PlayerID);
+        //Debug.Log("RightAnalogV: " + rightAnalogInputReceived.rightAnalogV + "|| player: " + player.PlayerID);
     } 
     #endregion
 

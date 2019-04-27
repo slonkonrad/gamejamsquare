@@ -33,6 +33,10 @@ public class GameController : MonoBehaviour
     private SoundController soundController;
     public SoundController SoundController => soundController;
 
+    [SerializeField]
+    private PathController pathController;
+    public PathController PathController => pathController;
+
     private void Awake()
     {
         Initialization();
