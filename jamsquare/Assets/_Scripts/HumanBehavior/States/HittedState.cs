@@ -14,6 +14,7 @@ public class HittedState : BaseHState
         myHuman.animator.enabled = false;
         myHuman.rb.constraints = RigidbodyConstraints.None;
         myHuman.PlayParticle();
+        myHuman.rb.AddForce(Vector3.up * 20);
         //myHuman.Hide();
 
 

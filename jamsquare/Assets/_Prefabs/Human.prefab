@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5133036559508986979}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -154, y: -3.44, z: -73.04}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 5133036561159840255}
   m_Father: {fileID: 0}
@@ -67,32 +67,6 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   animator: {fileID: 5133036561168895517}
   speed: 2
-  rigidbodies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  myRigidData:
-    head: {fileID: 0}
-    hips: {fileID: 0}
-    spine: {fileID: 0}
-    rest:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    mainCapsule: {fileID: 5133036559508986983}
   hasAnimation: 0
   maxVelocity: 0
   acceleration: 0
