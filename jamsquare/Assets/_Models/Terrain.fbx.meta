@@ -4513,6 +4513,7 @@ ModelImporter:
     109014: Terrain|Tree|Dupli|4481.0.0.0.0.0.0.0.0.0
     109016: curve
     109018: Plane
+    109020: Meta
     400000: //RootNode
     400002: Terrain
     400004: Tor
@@ -9023,6 +9024,7 @@ ModelImporter:
     409014: Terrain|Tree|Dupli|4481.0.0.0.0.0.0.0.0.0
     409016: curve
     409018: Plane
+    409020: Meta
     2100000: water
     2100002: No Name
     2100004: Water
@@ -13545,6 +13547,7 @@ ModelImporter:
     2309012: Terrain|Tree|Dupli|4481.0.0.0.0.0.0.0.0.0
     2309014: curve
     2309016: Plane
+    2309018: Meta
     3300000: Terrain
     3300002: Tor
     3300004: Water
@@ -18054,6 +18057,7 @@ ModelImporter:
     3309012: Terrain|Tree|Dupli|4481.0.0.0.0.0.0.0.0.0
     3309014: curve
     3309016: Plane
+    3309018: Meta
     4300000: Water
     4300002: Terrain
     4300004: Tor
@@ -18082,6 +18086,7 @@ ModelImporter:
     4300050: Terrain|Tree.041|Dupli|18.0.0.0.0.0.0.0.0.0
     4300052: curve
     4300054: Plane
+    4300056: Meta
     2186277476908879412: ImportLogs
   externalObjects:
   - first:
