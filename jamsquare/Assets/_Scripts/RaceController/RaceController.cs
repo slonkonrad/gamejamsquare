@@ -26,7 +26,7 @@ public class RaceController : MonoBehaviour
 
     private void Checkpoint_HandleCheckpoint(CheckPoint checkpoint, PlayerCar player)
     {
-        if (checkpoint.CheckpointNumber == playersProgressInRace[playerId] + 1) playersProgressInRace[player.PlayerId] += 1;
+        if (checkpoint.CheckpointNumber == playersProgressInRace[player.PlayerId] + 1) playersProgressInRace[player.PlayerId] += 1;
         if (playersProgressInRace[player.PlayerId] == checkpoints.Length)
         {
             int peopleOnBoard = player.gameObject.GetComponent<HumanCollector>().HumanCount;
