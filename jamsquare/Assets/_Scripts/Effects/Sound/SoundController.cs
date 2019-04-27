@@ -45,8 +45,7 @@ public class SoundController : MonoBehaviour
             engineSoundPlayer1.Play();
             engineSoundPlayer1.loop = true;
         }
-               
-        if(!engineSoundPlayer2.isPlaying)
+        else if(!engineSoundPlayer2.isPlaying)
         {
             engineSoundPlayer2.Play();
             engineSoundPlayer2.loop = true;
