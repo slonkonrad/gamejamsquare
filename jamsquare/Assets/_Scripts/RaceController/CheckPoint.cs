@@ -10,7 +10,7 @@ public class CheckPoint : MonoBehaviour
 
     public int CheckpointNumber => checkpointNumber;
 
-    public event Action<CheckPoint, int> HandleCheckpoint = delegate { };
+    public event Action<CheckPoint, PlayerCar> HandleCheckpoint = delegate { };
 
     public void OnTriggerEnter(Collider other)
     {
@@ -18,7 +18,7 @@ public class CheckPoint : MonoBehaviour
         if (player != null)
         {
             Debug.LogFormat("Player {0} entered checkpoint {1}", player.PlayerId, checkpointNumber);
-            HandleCheckpoint(this, player.PlayerId);
+            HandleCheckpoint(this, player);
         }
     }
 }

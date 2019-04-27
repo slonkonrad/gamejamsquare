@@ -24,13 +24,14 @@ public class RaceController : MonoBehaviour
         }
     }
 
-    private void Checkpoint_HandleCheckpoint(CheckPoint checkpoint, int playerId)
+    private void Checkpoint_HandleCheckpoint(CheckPoint checkpoint, PlayerCar player)
     {
-        if (checkpoint.CheckpointNumber == playersProgressInRace[playerId] + 1) playersProgressInRace[playerId] += 1;
-        if (playersProgressInRace[playerId] == checkpoints.Length)
+        if (checkpoint.CheckpointNumber == playersProgressInRace[playerId] + 1) playersProgressInRace[player.PlayerId] += 1;
+        if (playersProgressInRace[player.PlayerId] == checkpoints.Length)
         {
-            scoreListener.FinishedLap(playerId, 0); // TODO: replace by actual value
-            playersProgressInRace[playerId] = 0;
+            int peopleOnBoard = player.gameObject.GetComponent<HumanCollector>().HumanCount;
+            scoreListener.FinishedLap(player.PlayerId, peopleOnBoard); 
+            playersProgressInRace[player.PlayerId] = 0;
         }
     }
 
