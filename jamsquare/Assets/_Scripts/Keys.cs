@@ -18,7 +18,7 @@ public class Keys
         public static string Y_BUTTON_1 = "Y_ButtonPlayer1";
         public static string Y_BUTTON_2 = "Y_ButtonPlayer2";
 
-        public static string[] A_BUTTON ={ A_BUTTON_1, A_BUTTON_2 };
+        public static string[] A_BUTTON = { A_BUTTON_1, A_BUTTON_2 };
         public static string[] B_BUTTON = { B_BUTTON_1, B_BUTTON_2 };
         public static string[] X_BUTTON = { X_BUTTON_1, X_BUTTON_2 };
         public static string[] Y_BUTTON = { Y_BUTTON_1, Y_BUTTON_2 };
@@ -58,5 +58,12 @@ public class Keys
 
         public static string[] RIGHTANALOG_H = { RIGHT_ANALOG_H_PLAYER_1, RIGHT_ANALOG_H_PLAYER_2 };
         public static string[] RIGHTANALOG_V = { RIGHT_ANALOG_V_PLAYER_1, RIGHT_ANALOG_V_PLAYER_2 };
+    }
+
+    public class Players
+    {
+        public static int PLAYER_ONE = 0;
+        public static int PLAYER_TWO = 1;
+
     }
 }
