@@ -56,7 +56,7 @@ public class SplitScreen : MonoBehaviour {
         splitter = GameObject.CreatePrimitive(PrimitiveType.Quad);
         splitter.transform.parent = gameObject.transform;
         splitter.transform.localPosition = Vector3.forward;
-        splitter.transform.localScale = new Vector3(2, splitterWidth / 10, 1);
+        splitter.transform.localScale = new Vector3(3, splitterWidth / 10, 1);
         splitter.transform.localEulerAngles = Vector3.zero;
         splitter.SetActive(false);
 
@@ -65,7 +65,7 @@ public class SplitScreen : MonoBehaviour {
 	    split.GetComponent<MeshCollider>().enabled = false;
         split.transform.parent = splitter.transform;
         split.transform.localPosition = new Vector3(0, -(1 / (splitterWidth / 10)), 0);
-        split.transform.localScale = new Vector3(1, 2 / (splitterWidth / 10), 1);
+        split.transform.localScale = new Vector3(2, 2 / (splitterWidth / 10), 1);
         split.transform.localEulerAngles = Vector3.zero;
 
         //Creates both temporary materials required to create the splitscreen.
