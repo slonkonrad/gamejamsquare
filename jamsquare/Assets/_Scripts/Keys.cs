@@ -17,7 +17,23 @@ public class Keys
 
         }
     }
-    
+
+    public class Particles
+    {
+        public static string HIT = "CFX_Hit_C White";
+        public static string BLOOD = "CFX2_Blood";
+        public static string HARD_HIT = "CFX2_RockHit";
+    }
+
+
+
+    public class Tags
+    {
+        public static string HUMAN = "Human";
+        public static string BUS = "Bus";
+        public static string BODY = "Body";
+    }
+
     public class Inputs
     {
         public static string A_BUTTON_1 = "A_ButtonPlayer1";
