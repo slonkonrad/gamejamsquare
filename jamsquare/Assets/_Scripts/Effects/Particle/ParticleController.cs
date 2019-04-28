@@ -13,12 +13,20 @@ public class ParticleController : MonoBehaviour
         ParticleSystem newParticle = particles.FirstOrDefault(x => x.gameObject.name == name);
         if(!newParticle)
             return;
-        StartCoroutine(particleLifeCoroutine(newParticle, transform));
+        StartCoroutine(particleLifeCoroutine(newParticle, transform.position, transform.rotation));
     }
 
-    private IEnumerator particleLifeCoroutine(ParticleSystem particle, Transform transform)
+    public void FindAndInstantiateParticleAtTransform(string name, Vector3 pos, Quaternion rot)
     {
-        GameObject particleGameObject = Instantiate(particle.gameObject, transform);
+        ParticleSystem newParticle = particles.FirstOrDefault(x => x.gameObject.name == name);
+        if (!newParticle)
+            return;
+        StartCoroutine(particleLifeCoroutine(newParticle, pos, rot));
+    }
+
+    private IEnumerator particleLifeCoroutine(ParticleSystem particle, Vector3 pos, Quaternion rot)
+    {
+        GameObject particleGameObject = Instantiate(particle.gameObject, pos, rot);
         while(particle.IsAlive())
         {
             yield return new WaitForSeconds(0.5f);

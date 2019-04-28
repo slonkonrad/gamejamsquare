@@ -61,7 +61,11 @@ public class Human : MonoBehaviour
         if (other.collider.tag == "Bus")
         {
             SetHittedState(currentTarget,1);
-
+            ContactPoint contact = other.contacts[0];
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+            Vector3 pos = contact.point;
+            GameController.Instance.ParticleController.FindAndInstantiateParticleAtTransform(Keys.Particles.HIT, pos, rot);
+            GameController.Instance.SoundController.playScream();
         }
     }
 
@@ -82,6 +86,7 @@ public class Human : MonoBehaviour
     }
     public void SetHittedState(Target target, float waitTime)
     {
+
         currentState.Deinitialise();
         currentState = new HittedState();
         currentState.myWaitTime = waitTime;
