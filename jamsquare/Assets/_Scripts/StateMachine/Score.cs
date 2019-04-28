@@ -41,11 +41,20 @@ public class Score
 
         float lapTime = (Time.time - startLapTime);
 
-        float t = Mathf.Clamp((lapTime - scoreConfig.LowerLapTimeBound /
-                               (scoreConfig.UpperLapTimeBound - scoreConfig.LowerLapTimeBound)), 0, 1);
-        int lapScore = (int)Mathf.Lerp((float)scoreConfig.LapCompletedScore, 0, t);
-
-        ScoreValue += lapScore;
+        if (lapTime <= scoreConfig.LowerLapTimeBound)
+        {
+            ScoreValue += scoreConfig.LapCompletedScore;
+        }
+        else if (lapTime >= scoreConfig.UpperLapTimeBound)
+        {
+            ScoreValue += 0;
+        }
+        else
+        {
+            ScoreValue += (int) ((lapTime - scoreConfig.LowerLapTimeBound) /
+                                 (scoreConfig.UpperLapTimeBound - scoreConfig.LowerLapTimeBound) *
+                                 scoreConfig.LapCompletedScore);
+        }
 
         MinLapTime = Mathf.Min(MinLapTime, lapTime);
         MaxLapTime = Mathf.Max(MaxLapTime, lapTime);
