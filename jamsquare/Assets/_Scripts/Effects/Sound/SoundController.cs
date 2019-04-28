@@ -56,8 +56,8 @@ public class SoundController : MonoBehaviour
     public void playScream()
     {
         AudioSource chosenSound = screams[Random.Range(0, screams.Count)];
-        if(chosenSound)
             chosenSound.Play();
+            Debug.Log("I'm playing scream: "+ chosenSound.name);
     }
     public void playSound(string name)
     {
