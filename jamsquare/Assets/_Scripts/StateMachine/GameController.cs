@@ -25,6 +25,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private ScoreController scoreController;
     public ScoreController ScoreController => scoreController;
 
+    private static GameController instance;
+    public static GameController Instance { get { return instance; } }
+
     [SerializeField] 
     private ParticleController particleController;
     public ParticleController ParticleController => particleController;
@@ -44,11 +47,13 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+
         Initialization();
     }
     
     private void Initialization()
     {
+        instance = this;
         playerOneInputListener = PlayerOneInputController;
         playerTwoInputListener = PlayerTwoInputController;
         ChangeState(new MenuState());
