@@ -6,32 +6,19 @@ using System.Linq;
 public class ParticleController : MonoBehaviour
 {
     [SerializeField]
-    private List<ParticleSystem> particles;
+    private List<GameObject> particleGOs;
 
-    public void FindAndInstantiateParticleAtTransform(string name, Transform transform) 
+    public GameObject FindParticleGameObject(string name)
     {
-        ParticleSystem newParticle = particles.FirstOrDefault(x => x.gameObject.name == name);
+        return particleGOs.FirstOrDefault(x => x.name == name);
+    }
+
+    public void FindParticleGameObjectAndInstiatateItOnTransform(string name, Vector3 position, Quaternion rotation)
+    {
+        GameObject newParticle = particleGOs.FirstOrDefault(x => x.name == name);
         if(!newParticle)
             return;
-        StartCoroutine(particleLifeCoroutine(newParticle, transform.position, transform.rotation));
-    }
-
-    public void FindAndInstantiateParticleAtTransform(string name, Vector3 pos, Quaternion rot)
-    {
-        ParticleSystem newParticle = particles.FirstOrDefault(x => x.gameObject.name == name);
-        if (!newParticle)
-            return;
-        StartCoroutine(particleLifeCoroutine(newParticle, pos, rot));
-    }
-
-    private IEnumerator particleLifeCoroutine(ParticleSystem particle, Vector3 pos, Quaternion rot)
-    {
-        GameObject particleGameObject = Instantiate(particle.gameObject, pos, rot);
-        while(particle.IsAlive())
-        {
-            yield return new WaitForSeconds(0.5f);
-        }
-        Destroy(particleGameObject);
-        yield return null;
+        GameObject newObject = Instantiate(newParticle, position, rotation);
+        newObject.AddComponent<CFX_AutoDestructShuriken>();
     }
 }

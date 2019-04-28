@@ -6,6 +6,7 @@ public class HittedState : BaseHState
 {
     Human myHuman;
     Target myTarget;
+
     public override void Initialise(Human human, Target target)
     {
         myHuman = human;
