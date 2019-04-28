@@ -9,6 +9,7 @@ public class Human : MonoBehaviour
     public Transform model;
     public Target currentTarget;
     public Animator animator;
+    public Transform busParent;
     [SerializeField]
     public float speed = 2;
 
@@ -63,6 +64,8 @@ public class Human : MonoBehaviour
     {
         if (other.collider.tag == Keys.Tags.BUS)
         {
+            if (this.transform.parent != busParent && busParent!=null)
+                return;
             ContactPoint contact = other.contacts[0];
             Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
             Vector3 pos = contact.point;
@@ -77,6 +80,8 @@ public class Human : MonoBehaviour
 
     public void SetGoToTargetState(Target target, float waitTime)
     {
+        if (currentState == null)
+            return;
         currentState.Deinitialise();
         currentState = new GoToTargetState();
         currentState.myWaitTime = waitTime;
@@ -85,6 +90,8 @@ public class Human : MonoBehaviour
     }
     public void SetWaitState(Target target, float waitTime)
     {
+        if (currentState == null)
+            return;
         currentState.Deinitialise();
         currentState = new WaitState();
         currentState.myWaitTime = waitTime;
@@ -92,8 +99,9 @@ public class Human : MonoBehaviour
     }
     public void SetHittedState(Target target, float waitTime)
     {
-
-         currentState.Deinitialise();
+        if (currentState == null)
+            return;
+        currentState.Deinitialise();
         currentState = new HittedState();
         currentState.myWaitTime = waitTime;
         currentState.Initialise(this, target);
