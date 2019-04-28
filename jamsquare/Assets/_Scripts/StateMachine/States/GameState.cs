@@ -23,6 +23,7 @@ public class GameState : BaseState, IGameView, IActionButtons, IBumpers, ITrigge
 
         this.gameController.RaceController.scoreListener = this;
 
+        this.gameController.PathController.scoreListener = this;
         this.gameController.PathController.Initialise();
         this.gameController.PathController.StarthHumans();
     }

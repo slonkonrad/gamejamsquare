@@ -21,13 +21,16 @@ public class Human : MonoBehaviour
 
     public BaseHState currentState;
 
-    public void Initialise()
+    private IScoreListener scoreListener;
+
+    public void Initialise(IScoreListener scoreListener)
     {
         rb = GetComponent<Rigidbody>();
         currentTarget.GetComponentInParent<Target>();
         currentState = new GoToTargetState();
         currentState.Initialise(this,currentTarget);
 
+        this.scoreListener = scoreListener;
     }
 
     void FixedUpdate()
@@ -67,6 +70,8 @@ public class Human : MonoBehaviour
             GameController.Instance.ParticleController.FindParticleGameObjectAndInstiatateItOnTransform(Keys.Particles.BLOOD, pos, rot);
             GameController.Instance.SoundController.playScream();
             SetHittedState(currentTarget,1);
+
+            scoreListener.NpcKilled(other.gameObject.GetComponentInParent<PlayerCar>().PlayerId);
         }
     }
 

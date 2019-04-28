@@ -18,6 +18,8 @@ public class PathController : MonoBehaviour
 {
     public List<PathHuman> humansData = new List<PathHuman>();
 
+    public IScoreListener scoreListener;
+
     public void Initialise()
     {
         foreach (var obj in GameObject.FindGameObjectsWithTag("Human"))
@@ -35,7 +37,7 @@ public class PathController : MonoBehaviour
     {
         foreach (var item in humansData)
         {
-            item.human.Initialise();
+            item.human.Initialise(scoreListener);
             item.human.enabled = true;
         }
     }
@@ -53,7 +55,7 @@ public class PathController : MonoBehaviour
             item.human.gameObject.tag = "Human";
             item.human.transform.position = item.spawnPos;
             item.human.currentTarget = item.startingTarget;
-            item.human.Initialise();
+            item.human.Initialise(scoreListener);
 
         }
     }
